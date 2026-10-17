@@ -82,8 +82,9 @@
         { who: 'James', text: '我記得就是那天將莫羅移至阿卡漢的，這事是艾森長官許可的。\n不過奇怪的是，莫羅這個名字在那天之前並不存在。' },
         { who: 'James', text: '', image: 'assets/NO.jpg' },
         { who: 'James', text: '這是10號那天那個人出現的監視器畫面，其他的我就不知道了。' },
-        { who: 'captain', text: '詹姆斯，到辦公室向我說明當晚的情況。\n謝謝你幫我查出值班的人。' },
-		{ who: 'captain', text: '新人，如果你想知道監視器裡的人到底是誰，\n文件區裡有囚犯名籍冊，\n裡面會有囚犯的入監照和身分資料，\n謝謝你幫我找出值班的人。' }
+        { who: 'captain', text: '詹姆斯，到辦公室向我說明當晚的情況。' },
+		{ who: 'captain', text: '新人，如果你想知道監視器裡的人到底是誰，\n文件區裡有囚犯名籍冊，\n裡面會有囚犯的入監照和身分資料。' },
+        { who: 'captain', text: '謝謝你幫我查出值班的人。' }
       ];
     } else {
       state.pendingReplies = [
@@ -166,8 +167,7 @@
     if (state.finished) finishedNote();
     sync(); bottom();
     if (!state.joined && state.privateRevealed < privateIntro.length) timer = setTimeout(reveal, state.privateRevealed ? MESSAGE_DELAY : 100);
-    else if (!state.joined && state.privateRevealed >= privateIntro.length) timer = setTimeout(showJoinCard, MESSAGE_DELAY);
-    else if (state.revealed < intro.length) timer = setTimeout(reveal, state.revealed ? MESSAGE_DELAY : 100);
+    else if (state.joined && state.revealed < intro.length) timer = setTimeout(reveal, state.revealed ? MESSAGE_DELAY : 100);
     else if (state.replyPending) scheduleReply();
   }
   function submit(raw) {
@@ -192,6 +192,32 @@
     }
     save(); sync(); bottom(); return { accepted: true, finished: state.finished };
   }
+  function resetGame(){
+    clearTimeout(timer);
+    // Cookies can have different path/domain scopes; expire each accessible scope.
+    const paths=new Set(['/']);
+    const parts=location.pathname.split('/');
+    for(let i=1;i<=parts.length;i++){
+      const path=parts.slice(0,i).join('/')||'/';paths.add(path);paths.add(path+'/');
+    }
+    const domains=[''];
+    const labels=location.hostname.split('.');
+    for(let i=0;i<labels.length;i++){const domain=labels.slice(i).join('.');domains.push('; Domain='+domain,'; Domain=.'+domain)}
+    for(const cookie of document.cookie.split(';')){
+      const name=cookie.split('=')[0].trim();if(!name)continue;
+      for(const path of paths)for(const domain of domains){
+        document.cookie=name+'=; Max-Age=0; Path='+path+domain;
+      }
+    }
+    localStorage.removeItem(KEY);
+    history.replaceState({},'',location.pathname+location.search);
+    location.reload();
+  }
+  document.addEventListener('keydown',e=>{
+    if(e.ctrlKey&&e.altKey&&!e.shiftKey&&!e.metaKey&&e.code==='KeyD'){
+      e.preventDefault();if(!e.repeat)resetGame();
+    }
+  });
   $('composer').addEventListener('submit', event => { event.preventDefault(); if (!event.isComposing) submit(input.value); });
   input.addEventListener('input', sync);
   input.addEventListener('keydown', event => { if (event.key === 'Enter' && event.isComposing) event.preventDefault(); });
@@ -200,7 +226,6 @@
   }
   $('membersBtn').onclick = () => $('membersDialog').showModal();
   $('closeMembers').onclick = () => $('membersDialog').close();
-  function clock() { $('clock').textContent = now(); } clock(); setInterval(clock, 30000);
   // 手機鍵盤開啟時保持輸入框位於可見區域。
   function viewport() { document.documentElement.style.setProperty('--app-height', (window.visualViewport?.height || window.innerHeight) + 'px'); }
   window.visualViewport?.addEventListener('resize', viewport); window.addEventListener('resize', viewport); viewport();

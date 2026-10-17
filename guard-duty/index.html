@@ -4,20 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#151515">
-  <meta name="description" content="閱讀五名獄警的證詞，找出16號的值班者。">
+  <meta name="description" content="閱讀五名獄警的證詞，找出13號移交區的值班者。">
   <title>獄警值班群組</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%2306c755'/%3E%3Cpath d='M13 15h38v27H31L20 51v-9h-7z' fill='white'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20261018-cleanup">
 </head>
 <body>
 <main class="phone">
-  <div class="status" aria-hidden="true"><span id="clock">22:14</span><svg viewBox="0 0 64 16"><path d="M1 12v2h3v-2zm5-3v5h3V9zm5-3v8h3V6zm5-4v12h3V2z" fill="currentColor"/><path d="M25 5q8-7 16 0m-13 3q5-4 10 0m-7 3q2-2 4 0" fill="none" stroke="currentColor" stroke-width="2"/><rect x="46" y="3" width="14" height="10" rx="2" fill="none" stroke="currentColor"/><path d="M48 5h10v6H48zm13 1h2v4h-2" fill="currentColor"/></svg></div>
   <header class="chat-top"><h1 id="chatTitle">組長</h1><span id="chatCount" hidden></span><button class="icon-button" id="membersBtn" aria-label="查看群組成員" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button></header>
   <div class="messages" id="messages" role="log" aria-label="群組訊息" aria-live="polite" tabindex="0"><div class="day"><span>今天</span></div></div>
   <form class="composer" id="composer" hidden><input id="answerInput" class="answer" autocomplete="off" maxlength="50" placeholder="請稍候……" aria-label="輸入值班者的名字" disabled><button class="send" id="sendBtn" aria-label="送出答案" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 4 16 8-16 8 3-8-3-8Zm3 8h13"/></svg></button></form>
 </main>
 <dialog id="membersDialog" aria-labelledby="membersTitle"><div class="dialog-head"><h2 id="membersTitle">群組成員 (7)</h2><button class="icon-button" id="closeMembers" aria-label="關閉">×</button></div><div id="memberList"></div></dialog>
 <noscript>請開啟瀏覽器的 JavaScript，才能閱讀訊息並作答。</noscript>
-<script src="app.js"></script>
+<script src="app.js?v=20261018-reset"></script>
 </body>
 </html>
