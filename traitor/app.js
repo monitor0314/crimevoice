@@ -2,7 +2,7 @@
   'use strict';
   const KEY='traitor_arg_save_v1';
   const THANK_YOU_DELAY_SECONDS=4;
-  const HARASS_DELAY=5*60*1000, HARASS_INTERVAL=30*1000;
+  const HARASS_DELAY=5*60*1000, HARASS_INTERVAL=60*1000, HARASS_DURATION=60*60*1000;
   const EXTRA_HARASS_MESSAGES=[
     '老大！你今天也帥得太過分了吧！',
     '老大早安午安晚安！先一次跟你說！',
@@ -44,6 +44,7 @@
     '老大！我不是在洗版，我是在表達忠誠！',
     '老大！最後再說一次！你真的超級無敵厲害！'
   ];
+  const THANK_YOU_TEXT='謝謝你替我抓到叛徒，這小子之前也曾經被關過，或許你可以查查看這個方向，他當時的囚犯編號是BLKG-682-HNDPX';
   const PENGUIN_GREETING='很好，現在我把你加到群組了，去群組幫我找出叛徒吧';
   const people={
     penguin:{name:'偉大的高譚之王',avatar:'assets/QP.jpg'},
@@ -55,24 +56,21 @@
     ethan:{name:'伊森',avatar:'assets/ethan.webp'},
     percival:{name:'帕西瓦爾',avatar:'assets/percival.webp'},
     diana:{name:'黛安娜',avatar:'assets/diana.webp'},
-    Oven:{name:'歐文',avatar:'assets/Oven.webp'},
     me:{name:'你',avatar:'assets/me.webp'}
   };
-  const opening=['deputy','我聽老大說我們家族內部有叛徒，他把重要文件藏起來了。'];
+  const opening=['deputy','七個人裡只有一個叛徒。只有叛徒說謊，其餘六人都說真話。'];
   const intro=[
-    ['deputy','以下是七位嫌疑人的說詞，\n七名嫌疑人中只有一位叛徒，\n而且只有叛徒說真話，其餘六人都在說謊。\n請你找出叛徒，並判斷文件藏在哪裡。'],
-    ['john','亞瑟、梅林之中有人是叛徒，或者文件在抽屜裡。'],
-    ['arthur','我不是叛徒，而且文件在書架上。'],
-    ['merlin','約翰、黛安娜之中有人是叛徒，或者文件在書架上。'],
-    ['gawain','梅林是叛徒，或者文件不在保險箱裡。'],
-    ['ethan','文件在保險箱裡，而且約翰和帕西瓦爾都不是叛徒。'],
-    ['percival','伊森是叛徒，而且文件不在保險箱裡。'],
-    ['diana','高文是叛徒，而且文件在保險箱裡。'],
-    ['deputy','注意事項：\n「或者」表示至少一項成立，兩項都成立也算真。\n「而且」必須兩項都成立才算真。發言為假，是指整句為假，不代表句中每個部分都為假。'],
-    ['deputy','現在，請問誰是叛徒？']
+    ['john','我、亞瑟和梅林，這三個人說的全是真話。'],
+    ['arthur','如果梅林說的是真話，那我和約翰說的也都是真話。'],
+    ['merlin','叛徒就在約翰、亞瑟、伊森、帕西瓦爾、黛安娜這五個人之中。'],
+    ['gawain','我和帕西瓦爾都不是叛徒。'],
+    ['ethan','除了我和黛安娜以外，其他五個人當中，至少有一個人在說謊。'],
+    ['percival','我、亞瑟和高文，這三個人說的全是真話。'],
+    ['diana','如果梅林說的是真話，那我、約翰和亞瑟說的就全是真話。'],
+    ['deputy','誰是叛徒？']
   ];
   const chats=[
-    {game:true,group:true,avatar:'assets/BLACK.webp',name:'抓叛徒群組 (9)',preview:'副手：我聽老大說我們家族內部有叛徒',time:'現在',badge:1,pinned:true},
+    {game:true,group:true,avatar:'assets/BLACK.webp',name:'抓叛徒群組 (9)',preview:'副手：七個人裡只有一個叛徒。',time:'現在',badge:1,pinned:true},
     {avatar:'assets/bblock.webp',name:'B棟八卦集中營 (11)',preview:'湯瑪士：昨晚二樓又有人被叫走耶',time:'15:42',badge:3,memberAvatars:{'湯瑪士':'assets/thomas.webp','盧卡斯':'assets/lucas.webp','亨利':'assets/henry.webp'},msgs:[['湯瑪士','慘叫超大聲的，一定又是艾森幹的'],['盧卡斯','媽的，那女人根本神經病'],['亨利','你們最好當作沒聽見吧']]},
     {avatar:'assets/hideout.webp',name:'潘',preview:'舊收音機後面的空間好像還...',time:'14:07',msgs:[['潘','舊收音機後面的空間好像還能放一支。'],['你','那裡搜房時第一個就會被翻啦'],['潘','那你覺得床架接縫呢。'],['你','我不是藏那裡，但你可以試試看']]},
     {avatar:'assets/yard.webp',name:'里歐',preview:'欸，今天的放風延後二十分...',time:'昨天',msgs:[['里歐','欸，今天的放風延後二十分鐘。'],['你','又延？'],['里歐','門口已經貼通知了。']]},
@@ -82,11 +80,14 @@
   const PENGUIN_CHAT=chats.length;
   chats.push({penguin:true,avatar:people.penguin.avatar,name:people.penguin.name,pinned:true});
   let state=load(),activeChat=null,introTimer=null,thanksTimer=null,harassTimer=null;
-  state.penguin=state.penguin||{deleted:false,unread:true,messages:[],sentCount:0};
+  state.penguin=state.penguin||{deleted:false,unread:true,messages:[]};
+  // Older saves may have revealed more lines in the previous puzzle.
+  state.revealed=Math.min(state.revealed,intro.length);
+  state.introAt=(state.introAt||[]).slice(0,intro.length);
   initializeTimes();
   let menuChat=null;
   const home=document.getElementById('homeView'),chat=document.getElementById('chatView'),messages=document.getElementById('messages');
-  function load(){try{const x=JSON.parse(localStorage.getItem(KEY));if(x&&x.version===1){const map={arthur:'john',bella:'arthur',caleb:'merlin',diana:'gawain',fiona:'percival',gavin:'diana',ethan:'ethan'};x.target=map[x.target]||x.target;x.extra=(x.extra||[]).map(m=>({...m,who:map[m.who]||m.who}));x.revealed=intro.length;x.version=2}if(x&&x.version===2){x.readChats=x.readChats||[];x.thanksShown=x.thanksShown??x.extra.some(m=>m.text.includes('幫我找出叛徒'));x.bloodPlayed=x.bloodPlayed??(x.finished&&x.target==='ethan');return x}}catch(e){}return{version:2,started:false,revealed:0,stage:'answer',target:null,choice:null,extra:[],finished:false,readChats:[],thanksShown:false,bloodPlayed:false}}
+  function load(){try{const x=JSON.parse(localStorage.getItem(KEY));if(x&&x.version===1){const map={arthur:'john',bella:'arthur',caleb:'merlin',diana:'gawain',fiona:'percival',gavin:'diana',ethan:'ethan'};x.target=map[x.target]||x.target;x.extra=(x.extra||[]).map(m=>({...m,who:map[m.who]||m.who}));x.revealed=intro.length;x.version=2}if(x&&x.version===2){x.readChats=x.readChats||[];x.thanksShown=x.thanksShown??x.extra.some(m=>m.text.includes('幫我找出叛徒'));x.bloodPlayed=x.bloodPlayed??(x.finished&&x.target==='ethan');return x}}catch(e){}return{version:2,started:false,revealed:0,stage:'answer',target:null,extra:[],finished:false,readChats:[],thanksShown:false,bloodPlayed:false}}
   function save(){localStorage.setItem(KEY,JSON.stringify(state))}
   function initializeTimes(){
     const p=state.penguin,now=Date.now();
@@ -116,11 +117,18 @@
       }
       p.unread=!p.introduced&&!p.deleted;state.timeSchema=1;
     }
-    p.sentCount=p.messages.length;
-    if(p.intervalVersion!==1){
+    if(p.intervalVersion!==2){
       // Keep existing history intact; continue one minute after the last send.
       if(state.finished&&!p.deleted)p.nextAt=p.messages.length?p.messages.at(-1).at+HARASS_INTERVAL:(solved()?state.thanksDueAt:state.finishedAt)+HARASS_DELAY;
-      p.intervalVersion=1;
+      p.intervalVersion=2;
+    }
+    if(state.finished){
+      p.stopAt=p.stopAt||((solved()?state.thanksDueAt:state.finishedAt)+HARASS_DELAY+HARASS_DURATION);
+      if(p.nextAt>=p.stopAt)p.nextAt=null;
+    }
+    // Upgrade the old question screen without leaving obsolete choices in the story.
+    if(state.stage==='question'&&!state.finished){
+      state.extra=state.extra.filter(m=>m.text!=='你現在可以問他一個問題了。');
     }
     if(state.finished&&!Array.isArray(p.remainingMessages)){
       const sent=new Set(p.messages.map(m=>m.text));
@@ -164,7 +172,7 @@
   }
   function avatarHTML(person,extra='',override=''){const p=people[person]||people.deputy;return `<img class="avatar ${extra}" data-person="${person}" src="${override||p.avatar}" alt="${p.name}的頭貼">`}
   function solved(){return state.finished&&state.target==='ethan'}
-  function gamePreview(){if(solved()&&state.thanksShown)return'副手：謝謝你幫我找出叛徒。';if(state.extra.length){const m=state.extra[state.extra.length-1],p=people[m.who]||people.me;return`${p.name}：${m.text}`}if(state.started&&state.revealed){const m=intro[Math.min(state.revealed,intro.length)-1];return`${people[m[0]].name}：${m[1]}`}return chats[0].preview}
+  function gamePreview(){if(state.extra.length){const m=state.extra[state.extra.length-1],p=people[m.who]||people.me;return`${p.name}：${m.text}`}if(state.started&&state.revealed){const m=intro[Math.min(state.revealed,intro.length)-1];return`${people[m[0]].name}：${m[1]}`}return chats[0].preview}
   function renderHome(){
     const order=chats.map((_,i)=>i).sort((a,b)=>Number(isPinned(b))-Number(isPinned(a))||chatTime(b)-chatTime(a));
     document.getElementById('chatList').innerHTML=order.map(i=>{
@@ -192,16 +200,14 @@
     el.querySelector('.bubble').textContent=text;messages.appendChild(el);return el;
   }
 
-  function showBloodFinal(){const video=document.getElementById('blood'),still=document.getElementById('bloodStill');video.pause();video.classList.remove('show');still.classList.add('show')}
-  function hideBlood(){const video=document.getElementById('blood'),still=document.getElementById('bloodStill');video.pause();video.currentTime=0;video.classList.remove('show');still.classList.remove('show')}
-  function playBlood(){const video=document.getElementById('blood'),still=document.getElementById('bloodStill');still.classList.remove('show');video.classList.add('show');video.currentTime=0;video.onended=showBloodFinal;const p=video.play();if(p)p.catch(()=>showBloodFinal())}
+  function hideBlood(){const video=document.getElementById('blood');video.pause();video.currentTime=0;video.classList.remove('show')}
+  function playBlood(){const video=document.getElementById('blood');video.classList.add('show');video.currentTime=0;video.onended=hideBlood;video.onerror=hideBlood;const p=video.play();if(p)p.catch(()=>hideBlood())}
   function playGunshot(){const audio=document.getElementById('gunshot');audio.currentTime=0;const p=audio.play();if(p)p.catch(()=>{})}
-  function addFinishedNote(){if(document.getElementById('finishedNote'))return;const n=document.createElement('div');n.id='finishedNote';n.className='finished-note';n.textContent='本次調查已結束，所有紀錄均已保存。';messages.appendChild(n)}
   function showThanks(){
     if(state.thanksShown)return;
-    const thanks={who:'deputy',text:'謝謝你幫我找出叛徒。',at:state.thanksDueAt};
+    const thanks={who:'deputy',text:THANK_YOU_TEXT,at:state.thanksDueAt};
     state.extra.push(thanks);state.thanksShown=true;
-    if(activeChat===0){addMessage(thanks.who,thanks.text,false,'','',thanks.at);addFinishedNote();scrollBottom()}
+    if(activeChat===0){addMessage(thanks.who,thanks.text,false,'','',thanks.at);scrollBottom()}
     save();if(home.classList.contains('active'))renderHome();
   }
 
@@ -214,7 +220,7 @@
     if(state.revealed<intro.length)introTimer=setTimeout(revealNext,650);
   }
 
-  function renderChat(){clearTimeout(introTimer);messages.innerHTML='';addMessage(opening[0],opening[1],false,'','',state.groupOpenedAt);intro.slice(0,state.revealed).forEach((m,i)=>addMessage(m[0],m[1],false,'','',state.introAt[i]));state.extra.forEach(m=>addMessage(m.who,m.text,m.me,'','',m.at));if(state.stage==='question'&&!state.finished)renderOptions();if(solved()){if(state.bloodPlayed)showBloodFinal();else{playBlood();playGunshot();state.bloodPlayed=true;save()}redAvatar();queueThanks()}else hideBlood();if(state.finished&&(!solved()||state.thanksShown))addFinishedNote();syncComposer();scrollBottom();if(state.revealed<intro.length&&!state.finished)introTimer=setTimeout(revealNext,650)}
+  function renderChat(){clearTimeout(introTimer);messages.innerHTML='';addMessage(opening[0],opening[1],false,'','',state.groupOpenedAt);intro.slice(0,state.revealed).forEach((m,i)=>addMessage(m[0],m[1],false,'','',state.introAt[i]));state.extra.forEach(m=>addMessage(m.who,m.text,m.me,'','',m.at));if(state.stage==='question'&&!state.finished){resolveAccusation();return}if(solved()){if(state.bloodPlayed)hideBlood();else{playBlood();playGunshot();state.bloodPlayed=true;save()}redAvatar();queueThanks()}else hideBlood();syncComposer();scrollBottom();if(state.revealed<intro.length&&!state.finished)introTimer=setTimeout(revealNext,650)}
   function renderOrdinary(c){
     messages.innerHTML='';c.msgs.forEach((m,i)=>{const isMe=m[0]==='你',memberAvatar=c.memberAvatars?.[m[0]]||c.avatar;addMessage(isMe?'me':'deputy',m[1],isMe,m[0],isMe?'':memberAvatar,state.historyAt[activeChat]-(c.msgs.length-1-i)*60000)});
     hideBlood();const input=document.getElementById('answerInput'),btn=document.getElementById('sendBtn');input.disabled=true;btn.disabled=true;input.placeholder='此對話僅供查看';scrollBottom();
@@ -247,8 +253,9 @@
 
   function queueHarassment(){
     clearTimeout(harassTimer);
-    if(!state.finished||state.penguin.deleted)return;
+    if(!state.finished||state.penguin.deleted||state.penguin.nextAt==null)return;
     if(state.penguin.nextAt<=Date.now())sendHarassment();
+    if(state.penguin.nextAt==null)return;
     harassTimer=setTimeout(queueHarassment,Math.max(0,state.penguin.nextAt-Date.now()));
   }
 
@@ -256,17 +263,18 @@
     return ['老大老大你好棒！','老大！讀我訊息！',solved()?'老大我抓到叛徒了！！！':'老大我沒有抓到叛徒ＱＱＱＱ','老大！你好帥！！！我崇拜你！','企鵝人就是第一名反派！',...EXTRA_HARASS_MESSAGES];
   }
   function sendHarassment(){
-    const p=state.penguin;if(!state.finished||p.deleted)return;
+    const p=state.penguin;if(!state.finished||p.deleted||p.nextAt==null)return;
     const now=Date.now();
     // Preserve the scheduled times when catching up after the page was closed.
-    while(p.nextAt<=now){
+    while(p.nextAt<=now&&p.nextAt<p.stopAt){
       // Persist the unused messages so a reload never restarts a round.
       if(!p.remainingMessages?.length)p.remainingMessages=harassmentPool();
       const index=Math.floor(Math.random()*p.remainingMessages.length);
       const [text]=p.remainingMessages.splice(index,1);
       p.messages.push({me:true,text,at:p.nextAt});
-      p.sentCount++;p.nextAt+=HARASS_INTERVAL;
+      p.nextAt+=HARASS_INTERVAL;
     }
+    if(p.nextAt>=p.stopAt)p.nextAt=null;
     save();if(activeChat===PENGUIN_CHAT)renderPenguin();if(home.classList.contains('active'))renderHome();
   }
 
@@ -278,11 +286,57 @@
     if(activeChat===PENGUIN_CHAT)renderPenguin();if(home.classList.contains('active'))renderHome();
   }
 
-  function submitAnswer(e){e.preventDefault();if(activeChat!==0)return;if(state.stage!=='answer'||state.finished||state.revealed<intro.length)return;const input=document.getElementById('answerInput');const raw=input.value.trim();if(!raw)return;const names={john:'約翰',arthur:'亞瑟',merlin:'梅林',gawain:'高文',percival:'帕西瓦爾',ethan:'伊森',diana:'黛安娜'};const matched=Object.keys(names).filter(k=>raw.includes(names[k]));const mine={at:Date.now(),who:'me',text:raw,me:true};state.extra.push(mine);addMessage(mine.who,mine.text,!!mine.me,'','',mine.at);input.value='';if(matched.length===0){const reply={at:Date.now(),who:'deputy',text:'你在說什麼？重答一次。'};state.extra.push(reply);addMessage(reply.who,reply.text,!!reply.me,'','',reply.at);save();scrollBottom();return}if(matched.length>1){const reply={at:Date.now(),who:'deputy',text:'叛徒只有一個，請重答。'};state.extra.push(reply);addMessage(reply.who,reply.text,!!reply.me,'','',reply.at);save();scrollBottom();return}state.target=matched[0];state.stage='question';const reply={at:Date.now(),who:'deputy',text:'你現在可以問他一個問題了。'};state.extra.push(reply);addMessage(reply.who,reply.text,!!reply.me,'','',reply.at);renderOptions();save();syncComposer();scrollBottom()}
-  function renderOptions(){const wrap=document.createElement('div');wrap.className='question-options';['１１１','２２２','３３３','４４４'].forEach((label,i)=>{const b=document.createElement('button');b.className='option';b.textContent=label;b.onclick=()=>chooseQuestion(i);wrap.appendChild(b)});messages.appendChild(wrap)}
-  function chooseQuestion(i){if(state.stage!=='question'||state.finished)return;const labels=['１１１','２２２','３３３','４４４'],answers=['１２３','456','789','1112'];document.querySelector('.question-options')?.remove();state.choice=i;const mine={at:Date.now(),who:'me',text:labels[i],me:true};state.extra.push(mine);addMessage(mine.who,mine.text,!!mine.me,'','',mine.at);const isTraitor=state.target==='ethan';if(isTraitor){const answer={at:Date.now(),who:'ethan',text:answers[i]};state.extra.push(answer);addMessage(answer.who,answer.text,!!answer.me,'','',answer.at);state.finished=true;state.stage='finished';state.thanksShown=false;state.thanksDueAt=Date.now()+THANK_YOU_DELAY_SECONDS*1000;playBlood();playGunshot();state.bloodPlayed=true;redAvatar();queueThanks()}else{const refusal={at:Date.now(),who:state.target,text:'我為什麼要告訴你？'};state.extra.push(refusal);addMessage(refusal.who,refusal.text,!!refusal.me,'','',refusal.at);state.finished=true;state.stage='finished';addFinishedNote()}state.finishedAt=state.extra.at(-1).at;if(!state.penguin.deleted)state.penguin.nextAt=(isTraitor?state.thanksDueAt:state.finishedAt)+HARASS_DELAY;save();queueHarassment();syncComposer();scrollBottom()}
+  function submitAnswer(e){e.preventDefault();if(activeChat!==0)return;if(state.stage!=='answer'||state.finished||state.revealed<intro.length)return;const input=document.getElementById('answerInput');const raw=input.value.trim();if(!raw)return;const names={john:'約翰',arthur:'亞瑟',merlin:'梅林',gawain:'高文',percival:'帕西瓦爾',ethan:'伊森',diana:'黛安娜'};const matched=Object.keys(names).filter(k=>raw.includes(names[k]));const mine={at:Date.now(),who:'me',text:raw,me:true};state.extra.push(mine);addMessage(mine.who,mine.text,!!mine.me,'','',mine.at);input.value='';if(matched.length===0){const reply={at:Date.now(),who:'deputy',text:'你在說什麼？重答一次。'};state.extra.push(reply);addMessage(reply.who,reply.text,!!reply.me,'','',reply.at);save();scrollBottom();return}if(matched.length>1){const reply={at:Date.now(),who:'deputy',text:'叛徒只有一個，請重答。'};state.extra.push(reply);addMessage(reply.who,reply.text,!!reply.me,'','',reply.at);save();scrollBottom();return}state.target=matched[0];resolveAccusation()}
+  function resolveAccusation(){
+    if(state.finished)return;
+    const isTraitor=state.target==='ethan';
+    const replies=isTraitor
+      ? [[state.target,'你們以為弄死我就沒事了？奧格維不會放過你們的！我們在監獄裡有的是辦法弄死那個跛腳的！']]
+      : [[state.target,'你抓錯了，我不是叛徒。'],['deputy','檢查過了，他確實不是叛徒。']];
+    for(const [who,text] of replies){
+      const reply={at:Date.now(),who,text};state.extra.push(reply);
+      addMessage(who,text,false,'','',reply.at);
+    }
+    state.finished=true;state.stage='finished';state.finishedAt=Date.now();
+    if(isTraitor){
+      state.thanksShown=false;state.thanksDueAt=state.finishedAt+THANK_YOU_DELAY_SECONDS*1000;
+      playBlood();playGunshot();state.bloodPlayed=true;redAvatar();queueThanks();
+    }
+    const p=state.penguin;
+    if(!p.deleted){
+      p.nextAt=(isTraitor?state.thanksDueAt:state.finishedAt)+HARASS_DELAY;
+      p.stopAt=p.nextAt+HARASS_DURATION;
+    }
+    save();queueHarassment();syncComposer();scrollBottom();
+  }
   function redAvatar(){document.querySelectorAll('[data-person="ethan"]').forEach(a=>a.classList.add('red'))}
-  function syncComposer(){const input=document.getElementById('answerInput'),btn=document.getElementById('sendBtn');const introducing=state.revealed<intro.length;const disabled=state.stage!=='answer'||state.finished||introducing;input.disabled=disabled;btn.disabled=disabled;input.placeholder=introducing?'請稍候……':'輸入叛徒的名字';if(state.stage==='question')input.placeholder='請選擇上方的一個問題';if(state.finished)input.placeholder='本次遊戲已結束'}
+  function syncComposer(){const input=document.getElementById('answerInput'),btn=document.getElementById('sendBtn');const introducing=state.revealed<intro.length;const disabled=state.stage!=='answer'||state.finished||introducing;input.disabled=disabled;btn.disabled=disabled;input.placeholder=introducing?'請稍候……':'輸入叛徒的名字';if(state.finished)input.placeholder='本次調查已結束'}
+  function resetGame(){
+    clearTimeout(introTimer);clearTimeout(thanksTimer);clearTimeout(harassTimer);
+    // Cookies can have different path/domain scopes; expire each accessible scope.
+    const paths=new Set(['/']);
+    const parts=location.pathname.split('/');
+    for(let i=1;i<=parts.length;i++){
+      const path=parts.slice(0,i).join('/')||'/';paths.add(path);paths.add(path+'/');
+    }
+    const domains=[''];
+    const labels=location.hostname.split('.');
+    for(let i=0;i<labels.length;i++){const domain=labels.slice(i).join('.');domains.push('; Domain='+domain,'; Domain=.'+domain)}
+    for(const cookie of document.cookie.split(';')){
+      const name=cookie.split('=')[0].trim();if(!name)continue;
+      for(const path of paths)for(const domain of domains){
+        document.cookie=name+'=; Max-Age=0; Path='+path+domain;
+      }
+    }
+    localStorage.removeItem(KEY);
+    history.replaceState({},'',location.pathname+location.search);
+    location.reload();
+  }
+  document.addEventListener('keydown',e=>{
+    if(e.ctrlKey&&e.altKey&&!e.shiftKey&&!e.metaKey&&e.code==='KeyD'){
+      e.preventDefault();if(!e.repeat)resetGame();
+    }
+  });
   document.getElementById('answerForm').addEventListener('submit',submitAnswer);document.getElementById('backBtn').onclick=goHome;
   document.getElementById('deleteFriendBtn').onclick=deleteFriend;
   document.getElementById('chatMenuBtn').onclick=()=>openMenu(activeChat);
@@ -291,7 +345,7 @@
   document.getElementById('chatMenu').addEventListener('click',e=>{if(e.target===e.currentTarget){const r=e.currentTarget.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeMenu()}});
   window.addEventListener('popstate',()=>{const i=Number(location.hash.slice(6));if(location.hash.startsWith('#chat-')&&chats[i])openChat(i,false);else goHome()});
   document.addEventListener('error',e=>{if(e.target instanceof HTMLImageElement&&e.target.dataset.person==='penguin'){e.target.hidden=true;const fallback=document.createElement('span');fallback.className='avatar penguin-fallback';fallback.textContent='♛';fallback.setAttribute('role','img');fallback.setAttribute('aria-label','偉大的高譚之王的暫用頭貼');e.target.replaceWith(fallback)}},true);
-  function updateClock(){const now=new Date().toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit',hour12:false});document.querySelectorAll('.clock').forEach(el=>el.textContent=now)}updateClock();setInterval(updateClock,1000);document.addEventListener('visibilitychange',updateClock);renderHome();
+  renderHome();
   if(!state.penguin.introduced){state.penguin.introduced=true;openChat(PENGUIN_CHAT,false);history.replaceState({chat:PENGUIN_CHAT},'',`#chat-${PENGUIN_CHAT}`)}
   else if(location.hash.startsWith('#chat-')){const i=Number(location.hash.slice(6));if(chats[i])openChat(i,false)}
   save();resumeTimers();

@@ -4,15 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
   <meta name="theme-color" content="#0b0b0b">
-  <meta name="description" content="在七位嫌疑人的證詞中，找出唯一說真話的叛徒。">
+  <meta name="description" content="在七位嫌疑人的證詞中，找出唯一說謊的叛徒。">
   <title>聊天</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%2306c755'/%3E%3Cpath d='M13 15h38v27H31L20 51v-9h-7z' fill='white'/%3E%3Ccircle cx='25' cy='29' r='3' fill='%2306c755'/%3E%3Ccircle cx='32' cy='29' r='3' fill='%2306c755'/%3E%3Ccircle cx='39' cy='29' r='3' fill='%2306c755'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20261018-cleanup">
 </head>
 <body>
 <main class="phone">
   <section id="homeView" class="view active home" aria-label="聊天首頁">
-    <div class="status"><span class="clock">16:08</span><span class="status-icons">● ▴ ◉ 96</span></div>
     <header class="home-head"><div class="home-title"><span class="chat-pill">聊天<span class="caret" aria-hidden="true"></span></span><span>好友</span></div><div class="home-actions" aria-hidden="true"><span><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="m7 15 3-3 3 3 2-2 3 3M8 5l1-2h6l1 2"/></svg></span><span><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M8 2v4m8-4v4M3 9h18m-13 4h3m-3 4h3m3-4h2"/></svg></span><span><svg viewBox="0 0 24 24"><path d="M4 5h16v12H9l-5 4V5Z"/><circle cx="17.5" cy="4" r="2.5" fill="#06c755" stroke="none"/></svg></span><span><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg></span></div></header>
     <div class="search">⌕ <span>搜尋</span></div>
     <div class="notice"><div class="notice-mark">!</div><div><strong>陌生訊息提醒</strong><span>請小心來路不明的連結與檔案</span></div></div>
@@ -22,10 +21,8 @@
   </section>
 
   <section id="chatView" class="view chat-view" aria-label="抓叛徒群組">
-    <div class="status"><span class="clock">16:08</span><span class="status-icons">● ▴ ◉ 96</span></div>
     <header class="chat-top"><button class="back" id="backBtn" aria-label="回到聊天列表">‹</button><div class="chat-title" id="chatTitle">抓叛徒群組 (9)</div><div class="tools"><span><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5M10 6v4l3 2"/></svg></span><span><svg viewBox="0 0 24 24"><path d="M6.6 3.8 9 8 6.8 10a16 16 0 0 0 7.2 7.2l2-2.2 4.2 2.4c.6.4.9 1 .7 1.7-.4 1.3-1.6 2-3 1.9C9.7 20.2 3.8 14.3 3 6.1c-.1-1.4.6-2.6 1.9-3 .7-.2 1.3.1 1.7.7Z"/></svg></span><button type="button" id="chatMenuBtn" aria-label="聊天選單" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button></div></header>
     <video class="blood" id="blood" muted playsinline preload="auto"><source src="assets/blood-flow.webm" type="video/webm"></video>
-    <img class="blood" id="bloodStill" src="assets/blood-final.webp" alt="" aria-hidden="true">
     <audio id="gunshot" preload="auto" src="assets/Bom.mp3"></audio>
     <div class="messages" id="messages"><div class="day"><span>今天</span></div></div>
     <form class="composer" id="answerForm"><button type="button" class="plus" aria-label="新增附件">＋</button><input id="answerInput" class="answer" autocomplete="off" maxlength="50" placeholder="輸入叛徒的名字" aria-label="回答誰是叛徒"><button class="send" id="sendBtn" aria-label="送出答案">➤</button></form>
@@ -37,6 +34,6 @@
     <button type="button" id="deleteFriendBtn">刪除好友</button>
   </dialog>
 </main>
-<script src="app.js"></script>
+<script src="app.js?v=20261018-cleanup"></script>
 </body>
 </html>
