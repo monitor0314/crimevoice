@@ -26,13 +26,14 @@ const logoutDialog = document.getElementById('logoutDialog');
 const confirmLogout = document.getElementById('confirmLogout');
 const cancelLogout = document.getElementById('cancelLogout');
 
-/* 登入後閒置三分鐘，顯示五秒倒數；只有按取消才會延長使用時間。 */
-const IDLE_TIMEOUT = 3 * 60 * 1000;
-const LOGOUT_COUNTDOWN = 10 * 1000;
+/* 登入後閒置五分鐘，顯示二十秒倒數；只有按取消才會延長使用時間。 */
+const IDLE_TIMEOUT = 5 * 60 * 1000;
+const LOGOUT_COUNTDOWN = 20 * 1000;
 const idleLogoutDialog = document.getElementById('idleLogoutDialog');
 const idleLogoutSeconds = document.getElementById('idleLogoutSeconds');
 const cancelIdleLogout = document.getElementById('cancelIdleLogout');
 let sessionActive = false;
+let currentAccount = '';
 let idleDeadline = 0;
 let idleTimer;
 let idleWarningVisible = false;
@@ -60,8 +61,9 @@ function checkIdleSession(){
     window.location.reload();
     return;
   }
-  idleLogoutSeconds.textContent = ['零','一','二','三','四','五','六','七','八','九','十'][Math.ceil(remaining / 1000)];
+  idleLogoutSeconds.textContent = ['零','一','二','三','四','五','六','七','八','九','十','十一','十二','十三','十四','十五','十六','十七','十八','十九','二十'][Math.ceil(remaining / 1000)];
   if(!idleWarningVisible){
+    document.querySelectorAll('.medical-password-dialog').forEach(dialog=>{dialog.close();dialog.remove();});
     idleWarningVisible = true;
     previousFocus = document.activeElement;
     idleBackground = [...document.querySelectorAll('.desktop, #modal, #logoutDialog')]
@@ -104,6 +106,26 @@ cancelIdleLogout.addEventListener('keydown', event => {
   if(event.key === 'Tab') event.preventDefault();
 });
 
+function enterSystem(account){
+  if(sessionActive) return;
+  loginError.textContent = '';
+  welcomeText.textContent = `歡迎你，${systemProfiles[account]}`;
+  loginLock.classList.add('unlocked');
+  sessionActive = true;
+  currentAccount = account;
+  resetIdleTimer();
+  setTimeout(() => loginLock.remove(), 500);
+}
+
+// 主持人快捷登入；只在登入畫面生效，不變更既有登入者或病歷解鎖狀態。
+document.addEventListener('keydown', event => {
+  if(event.ctrlKey && event.altKey && !event.shiftKey && !event.metaKey &&
+     event.code === 'KeyL' && !event.repeat && !sessionActive && loginLock.isConnected){
+    event.preventDefault();
+    enterSystem('a.strange');
+  }
+});
+
 loginForm.addEventListener('submit', event => {
   event.preventDefault();
 
@@ -111,12 +133,7 @@ loginForm.addEventListener('submit', event => {
   const password = loginPassword.value;
 
   if(systemAccounts[account] === password){
-    loginError.textContent = '';
-    welcomeText.textContent = `歡迎你，${systemProfiles[account]}`;
-    loginLock.classList.add('unlocked');
-    sessionActive = true;
-    resetIdleTimer();
-    setTimeout(() => loginLock.remove(), 500);
+    enterSystem(account);
     return;
   }
 
@@ -162,10 +179,45 @@ function closeModal(){
 
 const fileMap={
 "GHMA-114-DRAFT":"doc114",
-"GHMA-833-STASH":"doc833"
+"GHMA-833-STASH":"doc833",
+"ARKH-320-PUNIS":"doc320"
 };
 
 const documents={
+
+doc320:`
+<div class="document-bg"><div class="document disciplinary-document">
+<div class="doc-header">
+<h2>哥譚市公務人員懲處處分通知單</h2>
+<div class="meta-box">
+發文字號： 監警 甲字第ARKH-320-PUNIS號<br>
+發文日期： 2018 年 3 月 20 日<br>
+密等及解密條件或保密期限： 普通<br>
+附件： 懲處事證與調查紀錄表乙份
+</div></div>
+<h3>【主旨】</h3>
+<p>受處分人等 5 名因重大執行勤務過失，嚴重違反公務員服務法及矯正機關勤務規範，依法予以廢止受聘（僱）僱用／免職處分，自送達之次日起生效。</p>
+<h3>【事實與理由】</h3>
+<h4>一、 違失事實</h4>
+<p>受處分人編號 0181B、0182B、0183B、0184B、0185B，於執行戒護與監控勤務期間，未恪遵公務員應盡之善良管理者注意義務，致生重大職業過失，造成機關秩序與戒護安全之嚴重危害，事實明確。</p>
+<h4>二、 認定依據與法令</h4>
+<p>依據《公務員服務法》第 8 條及第 11 條規定，公務員應執行職務勤加盡責，不得有懈怠職務之行為。</p>
+<p>本案業經考績委員會（考評會）於 2016 年 3 月 15 日召開第 12 次會議審議，經出席委員過半數決議，認定過失情節重大，合於革職/免職要件。</p>
+<h3>【處分內容】</h3>
+<p>處分種類： 革職（廢止僱用 / 免職）</p>
+<p>生效日期： 本處分書送達受處分人之次日起生效。受處分人應於生效日起 3 日內完成移交手續並辦理離職。</p>
+<div class="disciplinary-dialogue">
+<p><strong>S.Essen</strong> ：請求撤回處分通知。</p>
+<p><strong>Superior-12</strong>：請求駁回，你也清楚我們需要拿出誠意</p>
+<p><strong>S.Essen</strong> ：沒有轉圜的餘地嗎？移交病患已經讓大家焦頭爛額，現在正需要人手，不能就這麼把整個部門都裁了吧？</p>
+<p><strong>Superior-12</strong>：那你就挑幾個人出來。我下午要看到名單。</p>
+</div>
+<p class="disciplinary-archive-notice"><mark class="medical-revealed">===［對話已被　Superior-12　封存，無法再留言。］===</mark></p>
+<aside class="medical-objective" aria-labelledby="disciplinaryObjectiveTitle">
+<h3 id="disciplinaryObjectiveTitle">【目標】</h3>
+<p><span class="medical-objective-check" aria-hidden="true">✓</span><span>你在檔案室裡看到了艾森與上級的對話，你決定去找艾森問清楚。</span></p>
+</aside>
+</div></div>`,
 
 doc114:`
 <div class="document-bg"><div class="document">
@@ -279,11 +331,13 @@ function startAuth(group){
   },5000);
 }
 /* ===== 密碼輸入 ===== */
-function querySystemGate(){
+function querySystemGate(system = 'prison'){
+  if(!sessionActive) return;
 
   openModal(`
   <div class="query-panel">
-  <p>本監獄系統已整合高譚各監獄系統</p>
+  <h2>${system === 'medical' ? '高譚醫療系統' : '高譚監獄綜合系統'}</h2>
+  <p>${system === 'medical' ? '已整合高譚各醫療體系系統' : '本監獄系統已整合高譚各監獄系統'}</p>
   <p id="fileCodeLabel">請輸入檔案編號</p>
   <div class="file-code" role="group" aria-labelledby="fileCodeLabel">
   <div class="code-group">${Array.from({length:4}, (_, i) => `<input class="pwd start" maxlength="1" aria-label="第一組第 ${i + 1} 個英文字母" inputmode="text" autocapitalize="characters" autocomplete="off" autocorrect="off" spellcheck="false">`).join('')}</div>
@@ -304,7 +358,11 @@ function querySystemGate(){
     const ends=[...document.querySelectorAll('.end')].map(i=>i.value).join('');
     const val=`${starts}-${mids}-${ends}`;
 
-    if(fileMap[val]){
+    if(system === 'medical'){
+      if(deathCertificates[val]) showDeathCertificate(val);
+      else if(medicalRecords[val]) showMedicalRecord(val);
+      else alert("查無此病歷");
+    }else if(fileMap[val]){
       renderDocument(documents[fileMap[val]]);
     }else{
       alert("查無此檔案");
@@ -312,6 +370,13 @@ function querySystemGate(){
   }
 
   inputs.forEach((input,idx)=>{
+    input.addEventListener('paste', e=>{
+      const pasted=e.clipboardData.getData('text').trim().toUpperCase().replace(/[-\s]/g,'');
+      if(!/^[A-Z]{4}\d{3}[A-Z]{5}$/.test(pasted)) return;
+      e.preventDefault();
+      inputs.forEach((field,i)=>{field.value=pasted[i];});
+      inputs[inputs.length-1].focus();
+    });
 
     input.addEventListener('input', ()=>{
       if(input.classList.contains('mid')){
@@ -365,10 +430,12 @@ document.addEventListener('dragstart', event => {
 
 /* 禁止反白與複製 */
 document.addEventListener('selectstart', event => {
+  if(event.target.closest?.('.certificate-editor')) return;
   event.preventDefault();
 });
 
 document.addEventListener('copy', event => {
+  if(event.target.closest?.('.certificate-editor')) return;
   event.preventDefault();
 });
 

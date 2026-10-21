@@ -439,7 +439,82 @@ body * {
 }
 
 /* 圖片禁止拖曳 */
+/* Medical records reuse document-bg, document, doc-header and meta-box above. */
+.medical-icon{border:0;background:transparent;font:inherit;padding:0}
+.medical-icon:focus-visible{outline:2px solid white;outline-offset:5px}
+.medical-toolbar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;padding-right:44px}
+.medical-toolbar button,.medical-password-actions button{min-height:44px;padding:6px 16px;border:1px solid rgba(255,255,255,.4);border-radius:3px;background:#111;color:white;font:inherit;cursor:pointer}
+#medicalContent p{margin:12px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.medical-metadata{text-align:left;overflow-wrap:anywhere}
+.medical-identity-row{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px;align-items:baseline;margin-bottom:12px}
+.medical-identity-0{text-align:left}
+.medical-identity-1{text-align:center;white-space:nowrap}
+.medical-identity-2{text-align:right}
+@media(max-width:620px){
+  .medical-identity-row{grid-template-columns:minmax(0,1fr) auto;row-gap:8px}
+  .medical-identity-1{grid-column:1 / -1;grid-row:2;text-align:left;white-space:normal}
+  .medical-identity-2{grid-column:2;grid-row:1}
+}
+.medical-metadata p,.medical-metadata h4{margin:8px 0;white-space:pre-wrap;font-size:inherit}
+.medical-metadata > :first-child{margin-top:0}
+.medical-metadata > :last-child{margin-bottom:0}
+#medicalContent h3{margin:28px 0 14px;font-size:20px}
+#medicalContent h4{margin:22px 0 10px;font-size:17px}
+#medicalArticle a{color:#00e5ff;text-decoration:underline;text-underline-offset:3px}
+#medicalArticle a:hover{color:white}
+.medical-redaction{display:inline-block;box-sizing:border-box;max-width:100%;width:var(--redaction-width,auto);min-width:40px;min-height:26px;border:0;border-radius:3px;padding:0;background:#000;color:transparent;font-size:0;vertical-align:middle;cursor:pointer}
+.medical-redaction.long{display:block;width:100%;min-height:150px;margin:12px 0;background:#000}
+.medical-redaction:focus-visible{outline:2px solid #00e5ff;outline-offset:3px}
+.medical-lock{margin-top:30px}
+.medical-objective{margin-top:32px;padding:18px 22px;border:1px solid rgba(0,229,255,.55);background:rgba(0,0,0,.65);color:#fff}
+.medical-objective h3{margin:0 0 12px;font-size:18px;color:#00e5ff}
+.medical-objective p{display:flex;gap:12px;margin:0;line-height:1.9;overflow-wrap:anywhere}
+.medical-objective-check{flex-shrink:0;color:#00e5ff}
+.disciplinary-document h4{margin-bottom:12px}
+.disciplinary-dialogue{margin-top:28px;padding-top:16px;border-top:1px solid rgba(255,255,255,.4)}
+.disciplinary-archive-notice{margin:24px 0;text-align:center;line-height:1.9;overflow-wrap:anywhere}
+.disciplinary-archive-notice mark{padding:3px 6px;font-weight:700}
+.prisoner-document h3{margin:30px 0 14px;font-size:20px}
+.prisoner-document p{overflow-wrap:anywhere}
+.prisoner-table-wrap{overflow-x:auto;margin:18px 0;border:1px solid rgba(255,255,255,.3)}
+.prisoner-table-wrap table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.8}
+.prisoner-table-wrap th,.prisoner-table-wrap td{padding:12px 14px;text-align:left;vertical-align:top;border:1px solid rgba(255,255,255,.22);min-width:80px;overflow-wrap:anywhere}
+.prisoner-table-wrap th{background:rgba(0,229,255,.1);color:#b9f5ff}
+.prisoner-table-wrap tr:nth-child(even){background:rgba(255,255,255,.035)}
+.medical-lock h3{color:#ffcf70}
+.medical-lock .medical-redaction{min-height:250px}
+.source-omission{background:#000;color:#000;border-radius:3px;letter-spacing:0}
+.medical-revealed{background:#ffdc80;color:#17130a;border-radius:2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+#medicalArticle .medical-revealed a{color:#004d62}
+#medicalArticle .medical-revealed a:hover{color:#002c38}
+.medical-password-dialog{box-sizing:border-box;width:min(420px,calc(100% - 32px));padding:28px;border:1px solid #00e5ff;background:#111;color:white;box-shadow:0 0 25px rgba(0,255,255,.3)}
+.medical-password-dialog::backdrop{background:rgba(0,0,0,.65)}
+.medical-password-dialog h2{margin:0 0 20px;font-size:22px;color:#00e5ff}
+.medical-password-dialog p,.medical-password-dialog label{line-height:1.7;font-size:14px}
+.medical-password-dialog input{box-sizing:border-box;width:100%;min-height:46px;margin-top:10px;padding:10px;border:1px solid #687985;background:#05090c;color:white;font:18px system-ui;user-select:text;-webkit-user-select:text}
+.medical-password-actions{display:flex;justify-content:flex-end;gap:10px}
+.medical-password-error{color:#ff6b6b;min-height:24px}
+.certificate-document > p{white-space:pre-wrap;overflow-wrap:anywhere}
+.certificate-status{color:#ffdc80;line-height:1.7}
+.certificate-status:empty{display:none}
+.certificate-note{margin-top:28px;padding-top:16px;border-top:1px solid rgba(255,255,255,.4)}
+.certificate-note-heading{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.certificate-note-heading h3{margin:0}
+.certificate-note-heading button{padding:6px 16px;min-height:40px;border:1px solid #687985;background:#111;color:#00e5ff;border-radius:3px;font:inherit;cursor:pointer}
+.certificate-note-text{white-space:pre-wrap;overflow-wrap:anywhere}
+.certificate-edit-time{font-size:13px;color:#a9bec7}
+.certificate-editor label{display:block;margin:18px 0 6px}
+.certificate-editor textarea{box-sizing:border-box;width:100%;min-height:44px;padding:10px;border:1px solid #687985;border-radius:3px;background:#05090c;color:#fff;font:16px/1.6 system-ui;resize:vertical;user-select:text;-webkit-user-select:text}
+.certificate-editor textarea:focus-visible{outline:2px solid #00e5ff}
+.certificate-editor .medical-toolbar{margin-top:24px}
+@media(max-width:820px){
+  .medical-toolbar{gap:8px}
+  .medical-toolbar button{padding:6px 10px;font-size:14px}
+  #medicalContent h3{font-size:18px}
+}
 img {
   -webkit-user-drag: none;
   user-drag: none;
 }
+
+

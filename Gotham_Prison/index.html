@@ -38,6 +38,11 @@
     <span>高譚監獄綜合系統</span>
   </div>
 
+  <button type="button" class="icon medical-icon" onclick="querySystemGate('medical')">
+    <img src="images/query2.png" alt="">
+    <span>高譚醫療系統</span>
+  </button>
+
   <div class="session-box" id="sessionBox">
     <div id="welcomeText">歡迎你</div>
     <button type="button" class="logout-btn" id="logoutButton">登出</button>
@@ -56,7 +61,7 @@
 
 <div class="logout-dialog" id="idleLogoutDialog" aria-hidden="true">
   <div class="logout-dialog-box" role="alertdialog" aria-modal="true" aria-labelledby="idleLogoutMessage">
-    <p id="idleLogoutMessage">你已經長達三分鐘沒有使用，<span id="idleLogoutSeconds">五</span>秒後自動登出</p>
+    <p id="idleLogoutMessage">你已經長達五分鐘沒有使用，<span id="idleLogoutSeconds">二十</span>秒後自動登出</p>
     <div class="logout-actions">
       <button type="button" id="cancelIdleLogout">取消</button>
     </div>
@@ -67,7 +72,11 @@
   <div class="modal-content" id="modalBody"></div>
 </div>
 
+<script src="medical-data.js"></script>
 <script src="script.js"></script>
+<script src="prison-records.js"></script>
+<script src="medical.js"></script>
+<script src="certificates.js"></script>
 
 </body>
 </html>
