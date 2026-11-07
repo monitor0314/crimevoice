@@ -81,6 +81,17 @@ const NEWS_RECENT_POSTS=[
 	  likes:2156,reposts:672,shares:318,
 	  replies:[]
 	},
+	{
+	  id:'news-1109-thanksgiving',
+	  publishedAt:'2026-11-09T09:00:00+08:00',
+	  handle:NEWS_PROFILE.handle,
+	  avatar:NEWS_PROFILE.avatar,
+	  time:'2天',
+	  headline:'【高譚娛樂快訊】布魯斯・韋恩攜超模泰瑞莎深夜約會！當場嘲諷：你們連約會對象都沒有嗎？',
+	  text:'昨晚，布魯斯．韋恩被拍到與知名模特泰瑞莎一同出入高級餐廳，兩人舉止親密，戀情傳聞迅速引發熱議。\n韋恩先生在被追問是否與泰瑞莎正式交往時表示：你們沒有約會對象，也沒有朋友邀請你們吃飯？如果實在找不到事情做，不妨看看韋恩集團的雙十一活動。至少消費還能抽獎。\n韋恩集團公關部門隨後轉發相關報導，並附上活動連結，表示：感謝董事長親自推薦，單身人士也別忘了把握年度優惠。',
+	  likes:2156,reposts:672,shares:318,
+	  replies:[]
+	},
   {
     id:'news-1108-museum',
     publishedAt:'2026-11-08T12:00:00+08:00',
