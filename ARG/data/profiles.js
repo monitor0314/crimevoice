@@ -70,7 +70,7 @@ const FOLLOWERS=[
  {name:'南邊來的',handle:'from_the_south',bio:'偶爾來市中心。',avatar:'assets/person-chen.svg'},
  {name:'咖啡第二杯',handle:'coffee_second',bio:'第一杯已經喝完了。',avatar:'assets/avatar-2.svg'},
  {name:'伊森',handle:'ethan_works',bio:'城市、工作、睡眠。',avatar:'assets/avatar-3.svg'},
- {name:'晚安高譚',handle:'goodnight_gotham',bio:'晚上比較清醒。',avatar:'assets/person-lin.svg'},
+ {name:'晚安高譚',handle:'goodnight_gotham',bio:'晚上比較清醒....',avatar:'assets/person-lin.svg'},
  {name:'小報讀者',handle:'tabloid_reader',bio:'我只是看看新聞。',avatar:'assets/tabloid_reader.webp'},
  {name:'沒有暱稱',handle:'no_nickname_here',bio:'',avatar:'assets/person-unknown.svg'},
  {name:'星期三',handle:'wednesday_person',bio:'不是每個星期三都一樣。',avatar:'assets/avatar-2.svg'},
@@ -101,7 +101,7 @@ const FOLLOWERS=[
 
 const FOLLOWING=[
  {name:'73號',handle:'room_73',bio:'請勿敲門。',avatar:'assets/room_73.webp'},
- {name:'路過的人',handle:'passing_by',bio:'只是剛好看到。',avatar:'assets/passing.webp'},
+ {name:'路過的人',handle:'passing_by',bio:'我只是路過',avatar:'assets/passing.webp'},
  {name:'林七',handle:'lin_seven',bio:'偶爾拍照。',avatar:'assets/person-lin.svg'},
  {name:'雨停以前',handle:'before_rainstops',bio:'你說的不過是如果。',avatar:'assets/person-rain.svg'},
  {name:'陳暮',handle:'muchen_26',bio:'Gotham',avatar:'assets/person-chen.svg'},

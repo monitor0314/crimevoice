@@ -436,7 +436,7 @@ function xiaMessages(){
   }
 }
   if(hasArrived(RELEASE.xiaReplyDeadline)&&!state.xiaAnAppointmentReplied){
-    messages.push(['in','你怎麼今天都沒回我訊息?記得明天見喔！']);
+    messages.push(['in','不回我我就當答應喔！']);
   }
 if(state.xiaAnWarnedOff&&hasArrived(RELEASE.xiaSafe)){
   messages.push(

@@ -4,11 +4,11 @@ const NEWS_POST={
   handle:'gotham_daily',
   avatar:'assets/GOTHAM.webp',
   time:'2026-3-15',
-  headline:'布魯斯．韋恩獲救　希爾市長移送法辦',
+  headline:'布魯斯．韋恩被狹持　希爾市長移送法辦',
   text:'韋恩企業董事長布魯斯．韋恩，昨夜於都奈橋建成周年紀念晚會遭到高譚市市長漢密爾頓．希爾脅持，好在最終高譚市義警們及時現身，事件才有驚無險地落幕。警方證實韋恩目前狀況穩定，已接受醫療檢查。\n\n同日晚間，高譚市長漢密爾頓．希爾遭警方拘捕，經偵訊後正式移送法辦，市政府已宣布啟動代理程序。據悉，在救援行動中取得多項關鍵證據，內容疑似涉及貪污和人體器官販賣等其他非法行動，目前已交由警方與檢方調查。\n\n檢方表示相關證據仍待進一步釐清，案件後續如何發展、希爾是否遭正式起訴，以及市府內部是否存在更多涉案人士，仍有待司法程序逐一確認。',
   clues:[
   {
-    title:'布魯斯．韋恩被希爾市長脅持',
+    title:'布魯斯．韋恩被希爾市長挾持',
     text:'今年初的報導裡，布魯斯在都奈橋晚會上被希爾市長脅持後被解救。'
   },
   {
@@ -18,16 +18,16 @@ const NEWS_POST={
   ],
   likes:18943,reposts:2841,shares:1607,
   replies:[
-    {handle:'martha_works',avatar:'assets/works.webp',text:'希爾市長無罪！！！！高譚日報是共和黨的狗吧？？',likes:227,reposts:18,shares:3},
+    {handle:'martha_works',avatar:'assets/works.webp',text:'共和黨又在搞操作媒體那套嗎？我支持希爾市長無罪！',likes:227,reposts:18,shares:3},
     {handle:'thomson_g',avatar:'assets/thomson_g.webp',text:'都被警方移送了還無罪，支持者到底要裝瞎到什麼時候？',likes:615,reposts:47,shares:12},
     {handle:'sophie_park',avatar:'assets/sophie_park.webp',text:'移送又不是判刑！講得像已經定罪一樣。',likes:438,reposts:31,shares:8},
     {handle:'allen_watch',avatar:'assets/allen_watch.webp',text:'現場那麼多人都看到希爾脅持韋恩了，還需要公開什麼？',likes:782,reposts:66,shares:19},
-    {handle:'citizen_404',avatar:'assets/citizen_404.webp',text:'到底是現場哪些人看到？我也說我在現場好不好？沒圖沒真相啦！',likes:391,reposts:22,shares:5},
+    {handle:'citizen_404',avatar:'assets/citizen_404.webp',text:'到底都是什麼人自稱有看到？沒圖沒真相啦',likes:391,reposts:22,shares:5},
     {handle:'george_news',avatar:'assets/george_news.webp',text:'欸我真的在現場。夜翼、紅頭罩和羅賓他們衝進去之後，警方才把希爾帶走。\n附上一張現場圖！',image:'assets/NEWS01.webp',likes:1264,reposts:153,shares:87},
     {handle:'lucy_says',avatar:'assets/lucy_says.webp',text:'蒙面義警闖進市府晚會、控制民選市長，大家居然沒有反應？',likes:317,reposts:29,shares:7},
     {handle:'william_w',avatar:'assets/william_w.webp',text:'他們救了一個被脅持的人，現場也有警方在場。不要講得像義警政變好嗎?',likes:694,reposts:54,shares:16},
 	{handle:'mark_truth',avatar:'assets/mark_truth.webp',text:'照片右下那位被綁著的人是布魯斯韋恩嗎？',likes:121,reposts:18,shares:1},
-    {handle:'tabloid_reader',avatar:'assets/tabloid_reader.webp',text:'哇，人體器官販賣？？這比昨天報紙寫的還誇張。',likes:843,reposts:71,shares:24},
+    {handle:'tabloid_reader',avatar:'assets/tabloid_reader.webp',text:'？人體器官販賣也能辯護是認真的嗎 果然裝睡的人叫不醒',likes:843,reposts:71,shares:24},
     {handle:'paul_cityhall',avatar:'assets/paul_cityhall.webp',text:'報導只說疑似涉及啦。先等檢方調查好嗎。',likes:529,reposts:38,shares:9},
     {handle:'southside_auntie',avatar:'assets/southside_auntie.webp',text:'希爾上任以後南區明明改善很多，我不相信他會做這種事！',likes:284,reposts:16,shares:3},
     {handle:'mark_truth',avatar:'assets/mark_truth.webp',text:'蝙蝠俠萬歲！',likes:911,reposts:79,shares:21},
@@ -38,11 +38,11 @@ const NEWS_POST={
     {handle:PROFILE.handle,avatar:PROFILE.avatar,profileLink:true,likeId:'reply1',text:'目前一切還在偵查中，請不要做過多猜測。',likes:46,reposts:2,shares:0},
     {handle:'sarah_here',avatar:'assets/sarah_here.webp',text:'所以現在是由副市長代理嗎。',likes:286,reposts:24,shares:6},
     {handle:'nick_no_filter',avatar:'assets/nick_no_filter.webp',text:'完了，今年底里夫斯的當選大概已經確定了，我對未來感到絕望。',likes:402,reposts:37,shares:9},
-    {handle:'helen_home',avatar:'assets/helen_home.webp',text:'里夫斯很好吧？至少長的蠻帥的啊。',likes:377,reposts:25,shares:5},
-    {handle:'paperboy_7',avatar:'assets/paperboy_7.webp',text:'今天所有報紙都賣光了，下午的增刊也沒剩幾份！',likes:538,reposts:48,shares:11},
+    {handle:'helen_home',avatar:'assets/helen_home.webp',text:'里夫斯不錯吧？至少長得滿帥的',likes:377,reposts:25,shares:5},
+    {handle:'paperboy_7',avatar:'assets/paperboy_7.webp',text:'今天所有報紙都賣光了，回去吃頓好的',likes:538,reposts:48,shares:11},
     {handle:'mr_brown_g',avatar:'assets/mr_brown_g.webp',text:'留友看，帥真的可以當飯吃。',likes:421,reposts:34,shares:8},
     {handle:'mia_afterfive',avatar:'assets/mia.webp',text:'有人有懶人包嗎？話說上面是不是有個人是市府幕僚？',likes:263,reposts:18,shares:4},
-    {handle:'oldtown_resident',avatar:'assets/oldtown_resident.webp',text:'都奈橋蓋這麼多年沒蓋好原來都是因為官商勾結。',likes:514,reposts:53,shares:18}
+    {handle:'oldtown_resident',avatar:'assets/oldtown_resident.webp',text:'難怪都奈橋這麼多年都沒蓋好，原來全進了希爾的口袋',likes:514,reposts:53,shares:18}
   ]
 };
 
