@@ -72,6 +72,8 @@ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 /* ===== 隱藏可點擊提示＋基本頁面保護 ===== */
 
 function unlock(id){
+  const post=ALL_POSTS.find(item=>item.id===id);
+  if(post&&!canAccessPost(post))return;
   const clues=CLUES.filter(c=>c.postId===id);
   const newClues=clues.filter(c=>!state.unlocked.has(c.id));
 
@@ -179,11 +181,20 @@ function checkCompletion(){
 
     const currentSignature=getCompletionSignature();
     if(currentSignature!==signature)return;
+    const day=currentTaipeiDay();
+    if(day>GAME_LAST_DAY||state.endingViewed)return;
 
     state.completionSignature=signature;
     save();
 
     const dialog=$('#completionDialog');
+    if(dialog){
+      dialog.querySelector('p').textContent=day===GAME_LAST_DAY
+        ? hasArrived(RELEASE.lilithMessages)
+          ? '莉莉絲今天重新開放陌生訊息了。去看看她的新串文，再試著傳訊息給她吧。'
+          : '今天還有新的發展，稍晚再來看看莉莉絲的串文吧。'
+        : '但……明天大家又會發什麼串文呢？';
+    }
 
     if(dialog&&!dialog.open){
       dialog.showModal();
@@ -204,6 +215,19 @@ function checkDailyAndGameNotices(isStartup=false){
   }
 
   if(today<GAME_START_DAY||today>GAME_LAST_DAY)return;
+  if(today===GAME_LAST_DAY){
+    if(!hasArrived(RELEASE.lilithMessages)||state.endingViewed)return;
+    const noticeKey=`${today}-ending`;
+    if(state.dailyNoClueNotices.has(noticeKey))return;
+    const dialog=$('#dailyNoClueDialog');
+    if(!dialog||dialog.open)return;
+    dialog.querySelector('h2').textContent='今天的故事還沒結束';
+    dialog.querySelector('p').textContent='莉莉絲重新開放陌生訊息了。去看看她今天的新串文，再試著傳訊息給她吧。';
+    dialog.showModal();
+    state.dailyNoClueNotices.add(noticeKey);
+    save();
+    return;
+  }
   if(getTodayClues().length)return;
   if(state.dailyNoClueNotices.has(today))return;
 

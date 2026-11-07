@@ -5,14 +5,14 @@ const NEWS_POST={
   avatar:'assets/GOTHAM.webp',
   time:'2026-3-15',
   headline:'布魯斯．韋恩獲救　希爾市長移送法辦',
-  text:'韋恩企業董事長布魯斯．韋恩，昨夜於都奈橋建成周年紀念晚會遭到高譚市市長漢密爾頓．希爾脅持，好在最終高譚市義警們即時現身，事件才有驚無險的落幕。警方證實韋恩目前狀況穩定，已接受醫療檢查。\n\n同日晚間，高譚市長漢密爾頓．希爾遭警方拘捕，經偵訊後正式移送法辦，市政府已宣布啟動代理程序。據悉，在救援行動中取得多項關鍵證據，內容疑似涉及貪污和人體器官販賣等其他非法行動，目前已交由警方與檢方調查。\n\n檢方表示相關證據仍待進一步釐清，案件後續如何發展、希爾是否遭正式起訴，以及市府內部是否存在更多涉案人士，仍有待司法程序逐一確認。',
+  text:'韋恩企業董事長布魯斯．韋恩，昨夜於都奈橋建成周年紀念晚會遭到高譚市市長漢密爾頓．希爾脅持，好在最終高譚市義警們及時現身，事件才有驚無險地落幕。警方證實韋恩目前狀況穩定，已接受醫療檢查。\n\n同日晚間，高譚市長漢密爾頓．希爾遭警方拘捕，經偵訊後正式移送法辦，市政府已宣布啟動代理程序。據悉，在救援行動中取得多項關鍵證據，內容疑似涉及貪污和人體器官販賣等其他非法行動，目前已交由警方與檢方調查。\n\n檢方表示相關證據仍待進一步釐清，案件後續如何發展、希爾是否遭正式起訴，以及市府內部是否存在更多涉案人士，仍有待司法程序逐一確認。',
   clues:[
   {
     title:'布魯斯．韋恩被希爾市長脅持',
     text:'今年初的報導裡，布魯斯在都奈橋晚會上被希爾市長脅持後被解救。'
   },
   {
-    title:'漢米爾頓．希爾',
+    title:'漢密爾頓．希爾',
     text:'高譚市長；疑似涉及貪汙和人體器官販賣等非法行動。'
   }
   ],
@@ -50,7 +50,7 @@ const NEWS_PROFILE={name:'高譚日報',handle:'gotham_daily',avatar:'assets/GOT
 const NEWS_RECENT_POSTS=[
   {
     id:'news-1111-transit',
-    publishedAt:'2026-11-11T11:45:00+08:00',
+    publishedAt:'2026-11-11T18:45:00+08:00',
     handle:NEWS_PROFILE.handle,
     avatar:NEWS_PROFILE.avatar,
     time:'15分鐘',
@@ -152,16 +152,16 @@ const NEWS_PROFILE_POSTS=[
   {id:'news-0314-bridge',handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,time:'2026-3-14',headline:'都奈橋建成周年　市府晚間舉行紀念晚會',text:'都奈橋今日迎來建成周年，市政府晚間將舉行紀念晚會。市長漢密爾頓．希爾、前議員里夫斯及韋恩企業董事長布魯斯．韋恩預計出席。',likes:1843,reposts:221,shares:96,replies:[]},
   {id:'news-0313-transit',handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,time:'2026-3-13',headline:'中央線號誌異常　尖峰時段延誤近半小時',text:'高譚捷運中央線今晨因號誌異常一度停駛，尖峰時段多座車站出現候車人潮，交通局表示系統已於上午九時恢復正常。',likes:921,reposts:138,shares:44,replies:[]},
   {id:'news-0312-hospital',handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,time:'2026-3-12',headline:'高譚綜合醫院擴建案通過　預計明年動工',text:'市議會昨日通過高譚綜合醫院擴建預算，院方表示新增院區將以急重症與兒童醫療為主，預計明年第一季動工。',likes:1377,reposts:186,shares:71,replies:[]},
-  {id:'news-0311-port',handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,time:'2026-3-11',headline:'港區倉庫深夜失火　無人傷亡',text:'高譚港第七码頭一處廢棄倉庫昨夜發生火警，消防局於兩小時內控制火勢，現場無人傷亡，起火原因仍在調查。',likes:2204,reposts:417,shares:183,replies:[]},
+  {id:'news-0311-port',handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,time:'2026-3-11',headline:'港區倉庫深夜失火　無人傷亡',text:'高譚港第七碼頭一處廢棄倉庫昨夜發生火警，消防局於兩小時內控制火勢，現場無人傷亡，起火原因仍在調查。',likes:2204,reposts:417,shares:183,replies:[]},
   {id:'news-0310-missing',handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,time:'2026-3-10',headline:'東區再傳失蹤案件　警方籲勿散播未證實消息',text:'東區近日接連傳出人口失蹤通報，警方表示目前尚無證據顯示案件彼此相關，已成立專案小組調查。',likes:4862,reposts:973,shares:515,replies:[]},
   {id:'news-0309-election',handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,time:'2026-3-9',headline:'市議會選區重劃案進入二讀　朝野仍無共識',text:'高譚市議會今日審議選區重劃草案，兩黨議員針對人口基準與行政區邊界持續交鋒，表決日期尚未確定。',likes:1108,reposts:264,shares:73,replies:[]},
   {id:'news-0308-wayne',handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,time:'2026-3-8',headline:'韋恩基金會宣布增設三處社區醫療站',text:'韋恩基金會宣布將於南區與舊城區增設三處社區醫療站，提供基礎診療、心理諮詢與夜間急診轉介服務。',likes:3561,reposts:521,shares:202,replies:[]},
-  {id:'news-0307-arkham',handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,time:'2026-3-7',headline:'市長選戰白熱化：里夫斯捲入謀殺疑雲，希爾支持度上升',text:'隨著市長大選進入最後倒數階段，民意中心最新公布數據顯示在《重生計畫》推出後，現任市長「漢密爾頓·希爾」的民調在過去一週意外回升，而其最大競爭對手——以年輕、清廉的形象而受到市民青睞的「亞瑟·里夫斯」議員，卻因導演馬丁·坎貝爾遇害而深陷爭議。\n警方至今仍不排除里夫斯涉案的可能性，檢察官辦公室則表示將全力調查，不容任何人置身於法律之外。',likes:638,reposts:102,shares:31,replies:[{handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,isAuthor:true,text:'然而坊間輿論，有不少聲音認為這起案件背後可能另有隱情。是有人刻意栽贓，還是政治操作？\n另一方面，希爾陣營則趁勢強化「穩定延續」的口號，強調他在城市建設與治安維護方面的「政績」。雖然外界長期質疑他與某些財團及黑幫勢力關係曖昧，但希爾本人始終予以否認，並在頻繁公開場合表達「一切都是為了更偉大的利益」。\n隨著最後一輪民調的截止，哥譚市選戰進入最緊繃的關頭。支持率的拉鋸、命案的真相，以及背後交錯的利益網絡，無不牽動著市民的未來。這場選戰將如何結束，尚無定論。',likes:23,reposts:0,shares:0}]},
+  {id:'news-0307-arkham',handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,time:'2026-3-7',headline:'市長選戰白熱化：里夫斯捲入謀殺疑雲，希爾支持度上升',text:'隨著市長大選進入最後倒數階段，民意中心最新公布數據顯示在《重生計畫》推出後，現任市長「漢密爾頓·希爾」的民調在過去一週意外回升，而其最大競爭對手——以年輕、清廉的形象而受到市民青睞的「亞瑟·里夫斯」議員，卻因導演馬丁·坎貝爾遇害而深陷爭議。\n警方至今仍不排除里夫斯涉案的可能性，檢察官辦公室則表示將全力調查，不容任何人置身於法律之外。',likes:638,reposts:102,shares:31,replies:[{handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,isAuthor:true,text:'然而坊間輿論，有不少聲音認為這起案件背後可能另有隱情。是有人刻意栽贓，還是政治操作？\n另一方面，希爾陣營則趁勢強化「穩定延續」的口號，強調他在城市建設與治安維護方面的「政績」。雖然外界長期質疑他與某些財團及黑幫勢力關係曖昧，但希爾本人始終予以否認，並在頻繁公開場合表達「一切都是為了更偉大的利益」。\n隨著最後一輪民調的截止，高譚市選戰進入最緊繃的關頭。支持率的拉鋸、命案的真相，以及背後交錯的利益網絡，無不牽動著市民的未來。這場選戰將如何結束，尚無定論。',likes:23,reposts:0,shares:0}]},
   {id:'news-0306-weather',handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,time:'2026-3-6',headline:'冷鋒晚間抵達　高譚未來三日持續降雨',text:'氣象中心預估冷鋒將於今日晚間抵達，高譚未來三日降雨機率偏高，沿海地區並可能出現強風。',likes:847,reposts:119,shares:52,replies:[]},
-  {id:'news-0227-arkham',handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,time:'2026-2-27',headline:'韋恩次子傑森·陶德·韋恩復出追蹤報導，股價波動恐影響資本市場',text:'日前韋恩企業（Wayne Enterprises）執行長布魯斯·韋恩（Bruce Wayne）在記者會上證實，曾被報導於數年前不幸喪生的次子傑森·陶德·韋恩（Jason Todd Wayne），事實上在當年意外後奇蹟生還，並接受長期海外療養，現已康復回國。\n',likes:1240,reposts:58,shares:12,replies:[{handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,isAuthor:true,text:'這一消息震驚社會各界之餘，也迅速在資本市場引發連鎖反應。韋恩企業自消息公佈當天起股價波動劇烈，盤中一度下挫3.8%，收盤時小幅回升，跌幅收斂至1.2%。\n市場分析師指出，雖然傑森·陶德本身未直接涉入韋恩企業的管理層或財務決策，但作為家族成員的身份，使得部分投資人對「企業治理結構的透明度」產生疑慮。著名投資機構安格羅資本（Anglo Capital）於聲明中指出：\n「管理層多年隱瞞家族成員狀況，或許出於人道理由，但對股東而言，任何資訊不對稱都可能構成潛在風險。我們建議持續觀察韋恩企業後續治理動態。」',likes:43,reposts:5,shares:2},{handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,isAuthor:true,text:'另一方面，私人財富管理界則持不同看法。哥譚市著名的高資產顧問機構普倫金融（Prynn Financial）認為，此舉有望穩固市場對韋恩家族繼承鏈的信心：\n「過去市場對韋恩家族未來的穩定性略有擔憂。傑森·陶德的復出，若能逐步參與慈善或家族基金業務，反而可能強化外界對企業的正面觀感。」\n同時，坊間亦流傳著關於傑森·陶德未來角色的各種猜測：有不具名人士稱布魯斯．韋恩對他的愧疚及溺愛將讓傑森成為最有可能取代德雷克．韋恩之地位的養子。然而，韋恩企業官方目前僅回應稱：「傑森先生將專注於私人康復計畫，目前無意涉入公司事務。」\n在哥譚這座城市，家族、資本與公眾形象從來無法徹底分離。傑森·陶德的重生，不只是家族的私事，也是市場的預警訊號。未來數月內，韋恩企業若無法有效釋疑、穩住敘事權，仍可能面臨外部董事壓力、內部重組呼聲，甚至被對手企業藉機施壓。',likes:43,reposts:5,shares:2}]},
-  {id:'news-0214-arkham',handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,time:'2026-2-14',headline:'韋恩大廈臨時召開了記者會，首次公開次子傑森·陶德·韋恩復出',text:'在過去數年間，韋恩家族次子的死亡一直被哥譚社會視為「不願提及的傷痛」，如今卻迎來了驚人的戲劇性反轉——曾被官方報導為「不幸車禍喪命」的傑森·陶德·韋恩（Jason Todd Wayne），在本週初意外公開露面，並由其父親、韋恩企業執行長布魯斯·韋恩親自證實其身分，震撼整座城市。\n',likes:638,reposts:102,shares:31,replies:[{handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,isAuthor:true,text:'今日清晨，韋恩大廈臨時召開了記者會，吸引了眾多媒體與公眾的關注。布魯斯·韋恩以異常低沉而堅定的語氣，首度就次子事件發表正式聲明：\n「多年來，我選擇了沉默，因為我相信我的兒子值得一個完整康復的機會，遠離聚光燈。事實上，傑森在那場意外中重傷未亡。我們當時選擇將他送往海外接受長期治療與重建，而非公佈真相。我承認，這是一個艱難的決定，也是出於父親本能的保護。',likes:13,reposts:5,shares:6},
-  {handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,isAuthor:true,text:'如今，他已準備好回到哥譚，重新找到自己的位置。」\n這番話一經公開，立刻引發了社交媒體與各大新聞頻道的熱烈討論。哥譚市民的情緒複雜，有人為韋恩家的奇蹟重聚感動落淚，也有人質疑多年的誤導是否應當給出更多解釋。\n根據多方消息來源證實，傑森當年確曾因一起涉及罪犯「小丑」的交通意外而重傷昏迷，該起事件一度引起社會轟動，卻因種種原因始終未能釐清全貌。當年韋恩家僅發布一紙簡短聲明，稱「悲痛失去至親」，自此不再對外說明。多年來，各種揣測與陰謀論甚囂塵上，如今真相的一角終於被揭開，卻也引來更多關於事故背後細節的關注。',likes:73,reposts:4,shares:1},
-  {handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,isAuthor:true,text:'目前，傑森·陶德·韋恩本人尚未對外發表任何聲明，亦未恢復參與任何企業、基金會或公共活動。然而，據一位不願具名的韋恩企業內部人士透露，公司高層已經開始策劃一項以傑森名義設立的青少年庇護中心，目標是為經歷過暴力、失家或心理創傷的年輕人提供支持與重建機會，象徵著傑森將以自己的方式回應這段痛苦過往。\n此外，韋恩家族的律師團隊也正在研擬相關聲明，對於過去的資訊處理以及未來的媒體合作方向進行調整，以求在尊重個人隱私與滿足公眾知情權之間取得平衡。\n布魯斯·韋恩最後亦於記者會中動情表示：\n「他是我的兒子，無論過去經歷了什麼，他永遠都是。這座城市給了我們無盡的挑戰，但我相信，哥譚也能給予第二次生命一次真正的機會。」\n本報將持續關注傑森·陶德·韋恩的復出動向，並追蹤哥譚社會對這一新篇章的各方回應與未來發展。',likes:23,reposts:0,shares:0}]}
+  {id:'news-0227-arkham',handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,time:'2026-2-27',headline:'韋恩次子傑森·陶德·韋恩復出追蹤報導，股價波動恐影響資本市場',text:'日前韋恩企業（Wayne Enterprises）執行長布魯斯·韋恩（Bruce Wayne）在記者會上證實，曾被報導於數年前不幸喪生的次子傑森·陶德·韋恩（Jason Todd Wayne），事實上在當年意外後奇蹟生還，並接受長期海外療養，現已康復回國。\n',likes:1240,reposts:58,shares:12,replies:[{handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,isAuthor:true,text:'這一消息震驚社會各界之餘，也迅速在資本市場引發連鎖反應。韋恩企業自消息公佈當天起股價波動劇烈，盤中一度下挫3.8%，收盤時小幅回升，跌幅收斂至1.2%。\n市場分析師指出，雖然傑森·陶德本身未直接涉入韋恩企業的管理層或財務決策，但作為家族成員的身份，使得部分投資人對「企業治理結構的透明度」產生疑慮。著名投資機構安格羅資本（Anglo Capital）於聲明中指出：\n「管理層多年隱瞞家族成員狀況，或許出於人道理由，但對股東而言，任何資訊不對稱都可能構成潛在風險。我們建議持續觀察韋恩企業後續治理動態。」',likes:43,reposts:5,shares:2},{handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,isAuthor:true,text:'另一方面，私人財富管理界則持不同看法。高譚市著名的高資產顧問機構普倫金融（Prynn Financial）認為，此舉有望穩固市場對韋恩家族繼承鏈的信心：\n「過去市場對韋恩家族未來的穩定性略有擔憂。傑森·陶德的復出，若能逐步參與慈善或家族基金業務，反而可能強化外界對企業的正面觀感。」\n同時，坊間亦流傳著關於傑森·陶德未來角色的各種猜測：有不具名人士稱布魯斯．韋恩對他的愧疚及溺愛將讓傑森成為最有可能取代德雷克．韋恩之地位的養子。然而，韋恩企業官方目前僅回應稱：「傑森先生將專注於私人康復計畫，目前無意涉入公司事務。」\n在高譚這座城市，家族、資本與公眾形象從來無法徹底分離。傑森·陶德的重生，不只是家族的私事，也是市場的預警訊號。未來數月內，韋恩企業若無法有效釋疑、穩住敘事權，仍可能面臨外部董事壓力、內部重組呼聲，甚至被對手企業藉機施壓。',likes:43,reposts:5,shares:2}]},
+  {id:'news-0214-arkham',handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,time:'2026-2-14',headline:'韋恩大廈臨時召開了記者會，首次公開次子傑森·陶德·韋恩復出',text:'在過去數年間，韋恩家族次子的死亡一直被高譚社會視為「不願提及的傷痛」，如今卻迎來了驚人的戲劇性反轉——曾被官方報導為「不幸車禍喪命」的傑森·陶德·韋恩（Jason Todd Wayne），在本週初意外公開露面，並由其父親、韋恩企業執行長布魯斯·韋恩親自證實其身分，震撼整座城市。\n',likes:638,reposts:102,shares:31,replies:[{handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,isAuthor:true,text:'今日清晨，韋恩大廈臨時召開了記者會，吸引了眾多媒體與公眾的關注。布魯斯·韋恩以異常低沉而堅定的語氣，首度就次子事件發表正式聲明：\n「多年來，我選擇了沉默，因為我相信我的兒子值得一個完整康復的機會，遠離聚光燈。事實上，傑森在那場意外中重傷未亡。我們當時選擇將他送往海外接受長期治療與重建，而非公佈真相。我承認，這是一個艱難的決定，也是出於父親本能的保護。',likes:13,reposts:5,shares:6},
+  {handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,isAuthor:true,text:'如今，他已準備好回到高譚，重新找到自己的位置。」\n這番話一經公開，立刻引發了社交媒體與各大新聞頻道的熱烈討論。高譚市民的情緒複雜，有人為韋恩家的奇蹟重聚感動落淚，也有人質疑多年的誤導是否應當給出更多解釋。\n根據多方消息來源證實，傑森當年確曾因一起涉及罪犯「小丑」的交通意外而重傷昏迷，該起事件一度引起社會轟動，卻因種種原因始終未能釐清全貌。當年韋恩家僅發布一紙簡短聲明，稱「悲痛失去至親」，自此不再對外說明。多年來，各種揣測與陰謀論甚囂塵上，如今真相的一角終於被揭開，卻也引來更多關於事故背後細節的關注。',likes:73,reposts:4,shares:1},
+  {handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,isAuthor:true,text:'目前，傑森·陶德·韋恩本人尚未對外發表任何聲明，亦未恢復參與任何企業、基金會或公共活動。然而，據一位不願具名的韋恩企業內部人士透露，公司高層已經開始策劃一項以傑森名義設立的青少年庇護中心，目標是為經歷過暴力、失家或心理創傷的年輕人提供支持與重建機會，象徵著傑森將以自己的方式回應這段痛苦過往。\n此外，韋恩家族的律師團隊也正在研擬相關聲明，對於過去的資訊處理以及未來的媒體合作方向進行調整，以求在尊重個人隱私與滿足公眾知情權之間取得平衡。\n布魯斯·韋恩最後亦於記者會中動情表示：\n「他是我的兒子，無論過去經歷了什麼，他永遠都是。這座城市給了我們無盡的挑戰，但我相信，高譚也能給予第二次生命一次真正的機會。」\n本報將持續關注傑森·陶德·韋恩的復出動向，並追蹤高譚社會對這一新篇章的各方回應與未來發展。',likes:23,reposts:0,shares:0}]}
 ];
 
 const NEWS_1112_POST={
@@ -171,7 +171,7 @@ const NEWS_1112_POST={
   text:'市政廳已撤下漢密爾頓．希爾位於主樓大廳的官方肖像。昨晚仍有數百名市民聚集於廣場，有人要求徹查相關案件，也有人高舉「希爾市長無罪」的標語。警方表示目前未發生重大衝突。',
   likes:5821,reposts:940,shares:377,
   replies:[
-    {handle:'cityhall_watch',avatar:'assets/avatar-2.svg',text:'蛤我本來要去潑漆的怎麼就徹走了',likes:318,reposts:27,shares:8},
+    {handle:'cityhall_watch',avatar:'assets/avatar-2.svg',text:'蛤我本來要去潑漆的怎麼就撤走了',likes:318,reposts:27,shares:8},
     {handle:'martha_works',avatar:'assets/works.webp',text:'希爾市長無罪！',likes:276,reposts:19,shares:5},
     {handle:'oldtown_resident',avatar:'assets/oldtown_resident.webp',text:'希望現場的大家平安',likes:143,reposts:9,shares:2},
     {handle:'jack_in_city',avatar:'assets/jack_in_city.webp',text:'到底是用哪隻眼睛看才看不出來= =\n到時候越查越黑你們就不要在那邊哭',likes:491,reposts:54,shares:13},
@@ -190,7 +190,7 @@ const NEWS_1112_POST={
 const NEWS_1114_POST={
   id:'news-1114-museum-explosion',handle:NEWS_PROFILE.handle,avatar:NEWS_PROFILE.avatar,
   publishedAt:RELEASE.museumExplosion,
-  headline:'美術館於適才遭遇小丑轟炸，現場死傷慘重',
+  headline:'美術館於適才疑似遭遇小丑轟炸，現場死傷慘重',
   text:'高譚市立美術館今日上午發生劇烈爆炸，警方初步研判事件可能與小丑有關。消防與救護人員已進入現場，館內外發現多名傷者，確切死傷人數仍待確認。警方已封鎖周邊道路，呼籲市民遠離現場。',
   likes:12741,reposts:6823,shares:4951,
   replies:[

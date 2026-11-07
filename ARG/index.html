@@ -99,13 +99,14 @@
 
     <section id="messagesView" class="view list-view"><div class="section-title"><h1>訊息</h1></div><div id="messageList"></div></section>
 
-    <section id="chatView" class="view chat-view"><div id="chatBody" class="chat-body"></div><form id="codeForm" class="code-form hidden"><input id="codeInput" inputmode="numeric" maxlength="4" placeholder="輸入答案" aria-label="輸入四位數答案"><button>傳送</button></form></section>
+    <section id="chatView" class="view chat-view"><div id="chatBody" class="chat-body"></div><form id="codeForm" class="code-form hidden"><input id="codeInput" inputmode="text" placeholder="發送訊息……" aria-label="發送訊息……"><button>傳送</button></form></section>
 
     <section id="endingView" class="view ending-view">
+      <audio id="endingAudio" src="./assets/ENDING.mp3" preload="none"></audio>
       <article class="ending-story">
         <h1>結局</h1>
-        <img id="endingImage" class="ending-image hidden" src="" alt="結局故事圖片">
         <p id="endingText">故事故事一大串故事。</p>
+        <img id="endingImage" class="ending-image hidden" src="" alt="結局故事圖片">
       </article>
     </section>
 
@@ -183,7 +184,7 @@
   <script src="./data/messages.js?v=modular1"></script>
   <script src="./js/clues.js?v=modular1"></script>
   <script src="./js/navigation.js?v=modular1"></script>
-  <script src="./js/app.js?v=modular1"></script>
+  <script src="./js/app.js?v=20261007-chat-placeholder-2"></script>
 
 
 </body></html>

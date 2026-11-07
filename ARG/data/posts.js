@@ -2,7 +2,7 @@
 const POSTS=[
   {
     id:'p1',
-    publishedAt:'2026-11-11T10:00:00+08:00',
+    publishedAt:'2026-11-11T15:00:00+08:00',
     handle:PROFILE.handle,
     time:'2小時',
     text:'今天下午突然很認真地思考了一件事\n工作究竟代表什麼，是為了錢，還是生活的意義。',
@@ -371,6 +371,7 @@ const POSTS=[
       {handle:'room_73',avatar:'assets/room_73.webp',text:'我有看到直播',likes:26,reposts:1,shares:0},
       {handle:PROFILE.handle,avatar:PROFILE.avatar,isAuthor:true,text:'唉。',likes:129,reposts:9,shares:3},
 	  {handle:'corner_of_paper',avatar:'assets/person-unknown.svg',text:'所以都奈橋到底要蓋多久？已經蓋五年了！',likes:26,reposts:1,shares:0},
+      {handle:'jack_in_city',avatar:'assets/jack_in_city.webp',text:'早他媽年初就通車了，你那邊還來得及買高譚基金',likes:87,reposts:3,shares:0},
     ]
   },
 
@@ -429,7 +430,7 @@ const POSTS=[
     id:'p35',
     handle:PROFILE.handle,
     time:'2024-2-16',
-    text:'收到現場傳過來的一些文件，看來這不是只是簡單修改一下法案能解決的事情。',
+    text:'收到現場傳過來的一些文件，看來這不是只靠簡單修改一下法案就能解決的事情。',
     likes:483,reposts:39,shares:9,
     replies:[
       {handle:'passing_by',avatar:'assets/passing.webp',text:'市政工作感覺好累。',likes:22,reposts:1,shares:0},
@@ -547,7 +548,7 @@ const REPOST_POSTS=[
   {
     id:'repost1',isRepost:true,
     handle:'BTA250',avatar:'assets/al520.webp',publishedAt:'2026-11-11T06:00:00+08:00',time:'6小時',
-    text:'現代人常陷入一種迷思：認為在愛情中做到絕對的真實與毫无保留，才是通往深層連結的唯一路徑。\n然而從心理學與實務經驗來看，缺乏界線的「過度自我暴露」往往事與願違。當真誠失去了分寸，它不再是建立信任的橋樑，反而可能轉化為對關係的隱形施壓，進而加速親密關係的崩解。究竟這份「毫無保留」背後隱藏著怎樣的心理機制，又是如何一步步侵蝕了彼此的感情？',
+    text:'現代人常陷入一種迷思：認為在愛情中做到絕對的真實與毫無保留，才是通往深層連結的唯一路徑。\n然而從心理學與實務經驗來看，缺乏界線的「過度自我暴露」往往事與願違。當真誠失去了分寸，它不再是建立信任的橋樑，反而可能轉化為對關係的隱形施壓，進而加速親密關係的崩解。究竟這份「毫無保留」背後隱藏著怎樣的心理機制，又是如何一步步侵蝕了彼此的感情？',
     likes:302,reposts:74,shares:22,
     replies:[{handle:'lin_seven',avatar:'assets/person-lin.svg',
 		text:'這篇分析寫得滿準的。',likes:18,reposts:4,shares:2}]},
@@ -634,7 +635,7 @@ const ALT_POSTS=[
     handle:ALT.handle,
     avatar:ALT.avatar,
     time:'2026-8-31',
-    text:'他說生日不是值得慶祝的日子。\n可每年的今天，他還是會特地抓時間回家跟家人團聚。',
+    text:'他說生日不是值得慶祝的日子。\n回憶起之前，每年的今天，他還是會特地抓時間回家跟家人團聚。',
     likes:31,reposts:4,shares:0,
     replies:[
       {
@@ -761,7 +762,7 @@ const ALT_REPLY_POSTS=[
   },
     {
     id:'alt-reply-6',
-    parentPost:{id:'alt-reply-parent-6',handle:'late_night_question',avatar:'assets/avatar-3.svg',time:'2026-05-04',text:'親愛的市民大家好，我是亞瑟里夫斯。\n在這裡，我懷著十分感恩與堅定的心情向大家宣佈：我正式決定參選今年的市長選舉。\n\n過去這段日子裡，走在哥譚的巷弄街坊中，聽著大家跟我分享生活的大小事、對地方發展的期待，還有那些「如果可以更好就好了」的心聲。每一個眼神、每一句託付，都深深烙印在我心裡。這裡是我們溫暖的家，這裡有我們的回憶、我們的生活，以及下一代的未來。但面對快速變遷的環境，我們需要更多行動、更貼近民意的聲音，來為這片土地注入新的活力。',likes:2856,reposts:889,shares:4135,replies:[]},
+    parentPost:{id:'alt-reply-parent-6',handle:'late_night_question',avatar:'assets/avatar-3.svg',time:'2026-05-04',text:'親愛的市民大家好，我是亞瑟里夫斯。\n在這裡，我懷著十分感恩與堅定的心情向大家宣佈：我正式決定參選今年的市長選舉。\n\n過去這段日子裡，走在高譚的巷弄街坊中，聽著大家跟我分享生活的大小事、對地方發展的期待，還有那些「如果可以更好就好了」的心聲。每一個眼神、每一句託付，都深深烙印在我心裡。這裡是我們溫暖的家，這裡有我們的回憶、我們的生活，以及下一代的未來。但面對快速變遷的環境，我們需要更多行動、更貼近民意的聲音，來為這片土地注入新的活力。',likes:2856,reposts:889,shares:4135,replies:[]},
     handle:ALT.handle,avatar:ALT.avatar,time:'2026-9-05',text:'希望候選人可以更有誠意的接受「眼神託付」，還是候選人可以穿透保鑣的肩膀跟市民們眼神相交？',likes:6,reposts:0,shares:0,replies:[]
   },
   {
@@ -839,8 +840,8 @@ const ACTIVITY_POSTS=[
 ];
 [
   ['a8','2026-11-11T11:55:00+08:00'],
-  ['a1','2026-11-11T11:42:00+08:00'],
-  ['a2','2026-11-11T11:00:00+08:00'],
+  ['a1','2026-11-11T18:42:00+08:00'],
+  ['a2','2026-11-11T19:00:00+08:00'],
   ['a3','2026-11-11T10:00:00+08:00'],
   ['a4','2026-11-11T08:00:00+08:00'],
   ['a5','2026-11-11T07:00:00+08:00'],

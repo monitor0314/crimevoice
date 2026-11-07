@@ -4,6 +4,15 @@ const HOME_VIEWS=new Set(['news','newsProfile','profile','alt']);
 function showView(v,previous=state.view,addHistory=true){
   if(!$('#'+v+'View'))return;
 
+  const endingAudio=$('#endingAudio');
+  if(v==='ending'){
+    endingAudio.currentTime=0;
+    endingAudio.play().catch(()=>{});
+  }else if(state.view==='ending'){
+    endingAudio.pause();
+    endingAudio.currentTime=0;
+  }
+
   if(HOME_VIEWS.has(state.view)&&!HOME_VIEWS.has(v)){
     state.lastHomeView=state.view;
     state.homeScrolls[state.view]=window.scrollY;

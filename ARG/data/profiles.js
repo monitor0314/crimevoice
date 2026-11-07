@@ -16,6 +16,7 @@ const RELEASE={
   xiaReplyDeadline:'2026-11-13T23:00:00+08:00',
   lilithMessages:'2026-11-14T09:00:00+08:00',
   xiaEarly:'2026-11-14T10:48:00+08:00',
+  xiaSafe:'2026-11-14T11:05:00+08:00',
   museumExplosion:'2026-11-14T11:00:00+08:00'
 };
 
@@ -37,12 +38,9 @@ function formatPublishedTime(item,now=Date.now()){
     if(diff<7*DAY)return `${Math.floor(diff/DAY)}天`;
     return dateInTaipei(published);
   }
-  const ahead=-diff;
-  if(ahead<MINUTE)return '即將發布';
-  if(ahead<HOUR)return `${Math.ceil(ahead/MINUTE)}分鐘後`;
-  if(ahead<DAY)return `${Math.ceil(ahead/HOUR)}小時後`;
-  if(ahead<30*DAY)return `${Math.ceil(ahead/DAY)}天後`;
-  return `${Math.max(1,Math.round(ahead/(30*DAY)))}個月後`;
+  // Scheduled posts stay hidden until release. Use a date as a fallback,
+  // including when a device clock is slow; never show a future countdown.
+  return dateInTaipei(published);
 }
 const PROFILE={name:'莉莉絲・凱特',handle:'lilith.kate',flag:'🇺🇸',location:'高譚',bio:'高譚人\n這裡的言論僅代表我個人。\n1994/08/21',tags:['#Gotham','#Democrats','#公共政策'],followers:'1,284',following:'156',avatar:'assets/avatar.webp'};
 const ALT={name:'LH',handle:'LH5588812',avatar:'assets/person-alt.webp'};
