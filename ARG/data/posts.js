@@ -252,7 +252,7 @@ const POSTS=[
     id:'p23',
     handle:PROFILE.handle,
     time:'2026-1-05',
-    text:'新年第一個工作日。\n市長說今年會是非常重要的一年。\n我看過第一季的行程表了，滿滿當當的。\n。',
+    text:'新年第一個工作日。\n市長說今年會是非常重要的一年。\n我看過第一季的行程表了，滿滿當當的。\n',
     likes:813,reposts:63,shares:18,
     replies:[
       {handle:'room_73',avatar:'assets/room_73.webp',text:'天啊，感覺就很累。',likes:46,reposts:3,shares:1},

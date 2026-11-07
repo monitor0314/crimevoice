@@ -635,7 +635,12 @@ function renderEnding(){
     text.textContent+=characters[index]||'';
     index++;
     if(index<characters.length)endingTypingTimer=setTimeout(typeNextCharacter,28);
-    else image.classList.toggle('hidden',!ENDING_CONTENT.image);
+    else {
+      image.classList.toggle('hidden',!ENDING_CONTENT.image);
+      state.endingViewed=true;
+      save();
+      checkDailyAndGameNotices();
+    }
   };
 
   typeNextCharacter();
@@ -689,7 +694,7 @@ function openLilithChat(){
 
   if(state.endingUnlocked){
     $('#showEndingBtn').onclick=()=>{
-      state.endingViewed=true;save();
+      
       if(completionTimer){clearTimeout(completionTimer);completionTimer=null}
       showView('ending','chat');
       renderEnding();
@@ -867,7 +872,7 @@ setTimeout(()=>{
   );
 
   $('#showEndingBtn').onclick=()=>{
-    state.endingViewed=true;save();
+    
     if(completionTimer){clearTimeout(completionTimer);completionTimer=null}
     showView('ending','chat');
     renderEnding();
