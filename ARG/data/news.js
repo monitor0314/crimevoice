@@ -25,7 +25,7 @@ const NEWS_POST={
     {handle:'citizen_404',avatar:'assets/citizen_404.webp',text:'到底都是什麼人自稱有看到？沒圖沒真相啦',likes:391,reposts:22,shares:5},
     {handle:'george_news',avatar:'assets/george_news.webp',text:'欸我昨天真的在現場，夜翼、紅頭罩和羅賓他們衝進去之後，警方才把希爾帶走\n附上一張現場圖！',image:'assets/NEWS01.webp',likes:1264,reposts:153,shares:87},
     {handle:'lucy_says',avatar:'assets/lucy_says.webp',text:'蒙面義警闖進市府晚會、控制民選市長，大家居然沒有反應？',likes:317,reposts:29,shares:7},
-    {handle:'william_w',avatar:'assets/william_w.webp',text:'他們救了一個被脅持的人，現場也有警方在場。不要講得像義警政變好嗎?',likes:694,reposts:54,shares:16},
+    {handle:'william_w',avatar:'assets/william_w.webp',text:'他們救了一個被脅持的人，現場也有警方在場\n不要講得像義警政變好嗎?',likes:694,reposts:54,shares:16},
 	{handle:'mark_truth',avatar:'assets/mark_truth.webp',text:'照片右下那位被綁著的人是布魯斯韋恩嗎？',likes:121,reposts:18,shares:1},
     {handle:'tabloid_reader',avatar:'assets/tabloid_reader.webp',text:'？人體器官販賣也能辯護是認真的嗎 果然裝睡的人叫不醒',likes:843,reposts:71,shares:24},
     {handle:'paul_cityhall',avatar:'assets/paul_cityhall.webp',text:'報導只說疑似涉及啦，先等檢方調查好嗎。',likes:529,reposts:38,shares:9},
@@ -41,7 +41,7 @@ const NEWS_POST={
     {handle:'helen_home',avatar:'assets/helen_home.webp',text:'里夫斯不錯吧？至少長得滿帥的',likes:377,reposts:25,shares:5},
     {handle:'paperboy_7',avatar:'assets/paperboy_7.webp',text:'今天所有報紙都賣光了，回去吃頓好的',likes:538,reposts:48,shares:11},
     {handle:'mr_brown_g',avatar:'assets/mr_brown_g.webp',text:'留友看，帥真的可以當飯吃',likes:421,reposts:34,shares:8},
-    {handle:'mia_afterfive',avatar:'assets/mia.webp',text:'有人有懶人包嗎？話說上面是不是有個人是市府幕僚？',likes:263,reposts:18,shares:4},
+    {handle:'mia_afterfive',avatar:'assets/mia.webp',text:'有人有懶人包嗎？\n話說上面是不是有個人是市府幕僚？',likes:263,reposts:18,shares:4},
     {handle:'oldtown_resident',avatar:'assets/oldtown_resident.webp',text:'難怪都奈橋這麼多年都沒蓋好，原來全進了希爾的口袋',likes:514,reposts:53,shares:18}
   ]
 };
