@@ -735,7 +735,7 @@ const ALT_POSTS=[
     handle:ALT.handle,
     avatar:ALT.avatar,
     time:'2023-11-25',
-    text:'裝了監視器\n有重播功能太好了。',
+    text:'裝了監視器\n有重播功能太好了',
     likes:2,reposts:0,shares:0,
     replies:[]
   }
@@ -747,7 +747,7 @@ const ALT_REPLY_POSTS=[
     publishedAt:RELEASE.portrait,
     handle:ALT.handle,
     avatar:ALT.avatar,
-    text:'你們從來沒有理解過他。',
+    text:'你們從來沒有理解過他',
     likes:12,reposts:1,shares:0,replies:[]
   },
   {
@@ -757,12 +757,12 @@ const ALT_REPLY_POSTS=[
   },
   {
     id:'alt-reply-2',
-    parentPost:{id:'alt-reply-parent-2',handle:'blackgate_letters',avatar:'assets/person-rain.svg',time:'2026-09-27',text:'今日公開行程中，里夫斯以俐落剪裁的深色西裝亮相，搭配紅色配件，整體造型前衛卻不失個人風格。相較以往較為正式的政治場合穿著，這次的搭配更添幾分時尚感，也意外成為現場媒體與民眾關注的焦點。',likes:73,reposts:5,shares:1,replies:[]},
+    parentPost:{id:'alt-reply-parent-2',handle:'blackgate_letters',avatar:'assets/person-rain.svg',time:'2026-09-27',text:'今日公開行程中，里夫斯以俐落剪裁的深色西裝亮相，搭配紅色配件，整體造型前衛卻不失個人風格；\n相較以往較為正式的政治場合穿著，這次的搭配更添幾分時尚感，也意外成為現場媒體與民眾關注的焦點。',likes:73,reposts:5,shares:1,replies:[]},
     handle:ALT.handle,avatar:ALT.avatar,time:'2026-09-27',text:'太矮了所以很像被幽靈附身的樂高呢。',likes:7,reposts:0,shares:0,replies:[]
   },
     {
     id:'alt-reply-6',
-    parentPost:{id:'alt-reply-parent-6',handle:'late_night_question',avatar:'assets/avatar-3.svg',time:'2026-05-04',text:'親愛的市民大家好，我是亞瑟里夫斯。\n在這裡，我懷著十分感恩與堅定的心情向大家宣佈：我正式決定參選今年的市長選舉。\n\n過去這段日子裡，走在高譚的巷弄街坊中，聽著大家跟我分享生活的大小事、對地方發展的期待，還有那些「如果可以更好就好了」的心聲。每一個眼神、每一句託付，都深深烙印在我心裡。這裡是我們溫暖的家，這裡有我們的回憶、我們的生活，以及下一代的未來。但面對快速變遷的環境，我們需要更多行動、更貼近民意的聲音，來為這片土地注入新的活力。',likes:2856,reposts:889,shares:4135,replies:[]},
+    parentPost:{id:'alt-reply-parent-6',handle:'late_night_question',avatar:'assets/avatar-3.svg',time:'2026-05-04',text:'親愛的市民大家好，我是亞瑟里夫斯，\n在這裡，我懷著十分感恩與堅定的心情向大家宣佈：我正式決定參選今年的市長選舉。\n\n過去這段日子裡，走在高譚的巷弄街坊中，聽著大家跟我分享生活的大小事、對地方發展的期待，還有那些「如果可以更好就好了」的心聲，每一個眼神、每一句託付，都深深烙印在我心裡。這裡是我們溫暖的家，這裡有我們的回憶、我們的生活，以及下一代的未來。但面對快速變遷的環境，我們需要更多行動、更貼近民意的聲音，來為這片土地注入新的活力。',likes:2856,reposts:889,shares:4135,replies:[]},
     handle:ALT.handle,avatar:ALT.avatar,time:'2026-9-05',text:'希望候選人可以更有誠意的接受「眼神託付」，還是候選人可以穿透保鑣的肩膀跟市民們眼神相交？',likes:6,reposts:0,shares:0,replies:[]
   },
   {
